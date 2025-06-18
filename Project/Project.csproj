@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormConnect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConnect.Designer.cs">
+      <DependentUpon>FormConnect.cs</DependentUpon>
+    </Compile>
     <Compile Include="HAMXULY.cs" />
     <Compile Include="Index.cs">
       <SubType>Form</SubType>
@@ -70,6 +76,11 @@
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLCKDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLCKDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TabItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,6 +105,9 @@
     <Compile Include="UserControl_Pos_HD.Designer.cs">
       <DependentUpon>UserControl_Pos_HD.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormConnect.resx">
+      <DependentUpon>FormConnect.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Index.resx">
       <DependentUpon>Index.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,6 +116,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -111,6 +126,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="TabItemControl.resx">
       <DependentUpon>TabItemControl.cs</DependentUpon>
@@ -136,6 +152,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QLCKDataSet.xsc">
+      <DependentUpon>QLCKDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLCKDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLCKDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLCKDataSet.xss">
+      <DependentUpon>QLCKDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\anhicon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\65fceb0cc94458f7aeb4ce9258953edd.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bb2938b52defc3940f62f9bdddc37b30.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

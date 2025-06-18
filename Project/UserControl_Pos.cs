@@ -127,5 +127,10 @@ namespace Project
 
             tabCounter = index; // Đảm bảo lần sau tạo tab là HĐ kế tiếp
         }
+
+        private void pnlCate_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

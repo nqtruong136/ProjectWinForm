@@ -141,6 +141,7 @@ namespace Project
             this.pnlCate.Name = "pnlCate";
             this.pnlCate.Size = new System.Drawing.Size(806, 520);
             this.pnlCate.TabIndex = 0;
+            this.pnlCate.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCate_Paint);
             // 
             // pnlMainHD
             // 

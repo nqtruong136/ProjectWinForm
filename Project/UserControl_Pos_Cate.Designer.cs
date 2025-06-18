@@ -65,6 +65,7 @@ namespace Project
             this.flpnlProduct.Name = "flpnlProduct";
             this.flpnlProduct.Size = new System.Drawing.Size(886, 594);
             this.flpnlProduct.TabIndex = 0;
+            this.flpnlProduct.Paint += new System.Windows.Forms.PaintEventHandler(this.flpnlProduct_Paint);
             // 
             // lbl1
             // 
@@ -73,6 +74,7 @@ namespace Project
             this.lbl1.Size = new System.Drawing.Size(124, 99);
             this.lbl1.TabIndex = 0;
             this.lbl1.Text = "label1";
+            this.lbl1.Click += new System.EventHandler(this.lbl1_Click);
             // 
             // lbl2
             // 
@@ -168,7 +170,7 @@ namespace Project
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(783, 99);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(44, 16);
             this.label1.TabIndex = 12;
             this.label1.Text = "label1";
             // 

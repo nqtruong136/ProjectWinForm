@@ -47,5 +47,10 @@ namespace Project
         {
 
         }
+
+        private void hệThốngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
