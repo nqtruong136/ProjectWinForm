@@ -27,7 +27,7 @@ namespace Project
         {
             HAMXULY.Connect();
             DataTable dt = new DataTable();
-            string query = "select * from Products where CategoryID='"+danhMuc+"'";
+            string query = "select * from SanPham where MaDanhMuc='"+danhMuc+"'";
             // Giả sử dùng danh sách mẫu
             
             try
@@ -38,8 +38,8 @@ namespace Project
                     foreach (DataRow dr in dt.Rows)
                     {
                         Label lbl = new Label();
-                        lbl.Text = dr["ProductName"].ToString();
-                        lbl.Name = dr["ProductName"].ToString();
+                        lbl.Text = dr["TenSanPham"].ToString();
+                        lbl.Name = dr["MaSanPham"].ToString();
                         flpnlProduct.Controls.Add(lbl);
 
                     }

@@ -44,5 +44,15 @@ namespace Project
             decimal total = products.Sum(p => p.TotalPrice);
             lblTotal.Text = $"Tổng tiền: {total:N0} VNĐ";
         }
+
+        private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

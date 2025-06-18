@@ -67,7 +67,7 @@ namespace Project
             this.splitContainer1.Panel2.Controls.Add(this.tabPanel);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(1099, 571);
-            this.splitContainer1.SplitterDistance = 806;
+            this.splitContainer1.SplitterDistance = 597;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
@@ -89,7 +89,7 @@ namespace Project
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.pnlCate);
-            this.splitContainer2.Size = new System.Drawing.Size(806, 571);
+            this.splitContainer2.Size = new System.Drawing.Size(597, 571);
             this.splitContainer2.SplitterDistance = 47;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -139,18 +139,17 @@ namespace Project
             this.pnlCate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCate.Location = new System.Drawing.Point(0, 0);
             this.pnlCate.Name = "pnlCate";
-            this.pnlCate.Size = new System.Drawing.Size(806, 520);
+            this.pnlCate.Size = new System.Drawing.Size(597, 520);
             this.pnlCate.TabIndex = 0;
             // 
             // pnlMainHD
             // 
-            this.pnlMainHD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlMainHD.Location = new System.Drawing.Point(45, 0);
+            this.pnlMainHD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMainHD.Location = new System.Drawing.Point(50, 0);
             this.pnlMainHD.Name = "pnlMainHD";
-            this.pnlMainHD.Size = new System.Drawing.Size(244, 571);
+            this.pnlMainHD.Size = new System.Drawing.Size(448, 571);
             this.pnlMainHD.TabIndex = 1;
+            this.pnlMainHD.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMainHD_Paint);
             // 
             // tabPanel
             // 
