@@ -17,7 +17,7 @@ namespace Project
         public static void Connect()
         {
             conn = new SqlConnection();
-            conn.ConnectionString = @"Data Source=MACBOOK-PRO\SQLEXPRESS;Initial Catalog=QLCK;Integrated Security=True";
+            conn.ConnectionString = @"Data Source=172.25.173.248,1433;Initial Catalog=QLCK;User ID=hieu;Password=159753;TrustServerCertificate=True;";
             conn.Open();    
         }   
         public static void Disconnected()
