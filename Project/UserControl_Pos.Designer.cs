@@ -21,6 +21,7 @@ namespace Project
             base.Dispose(disposing);
         }
 
+
         #region Component Designer generated code
 
         /// <summary> 
@@ -205,6 +206,7 @@ namespace Project
         }
 
         #endregion
+
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
