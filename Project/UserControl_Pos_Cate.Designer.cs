@@ -21,7 +21,6 @@ namespace Project
             base.Dispose(disposing);
         }
 
-
         #region Component Designer generated code
 
         /// <summary> 
@@ -225,8 +224,6 @@ namespace Project
         }
 
         #endregion
-
-
 
         private System.Windows.Forms.FlowLayoutPanel flpnlProduct;
         private System.Windows.Forms.Label lbl1;
