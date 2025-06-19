@@ -18,6 +18,7 @@ namespace Project
         {
             conn = new SqlConnection();
             conn.ConnectionString = @"Data Source=172.25.173.248,1433;Initial Catalog=QLCK;User ID=hieu;Password=159753;TrustServerCertificate=True;";
+
             conn.Open();
            /* string connectionString = @"Data Source=172.25.173.248,1433;Initial Catalog=QLCK;User ID=hieu;Password=159753;TrustServerCertificate=True;";
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -32,6 +33,8 @@ namespace Project
                     MessageBox.Show("❌ Kết nối thất bại!\nLỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }*/
+            conn.Open();    
+
         }   
         public static void Disconnected()
         {

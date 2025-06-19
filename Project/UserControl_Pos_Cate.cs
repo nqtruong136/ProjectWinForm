@@ -27,7 +27,11 @@ namespace Project
         {
             HAMXULY.Connect();
             DataTable dt = new DataTable();
+
             string query = "select * from SanPham where MaSanPham='"+danhMuc+"'";
+
+            string query = "select * from SanPham where MaDanhMuc='"+danhMuc+"'";
+
             // Giả sử dùng danh sách mẫu
             
             try
@@ -39,7 +43,21 @@ namespace Project
                     {
                         Label lbl = new Label();
                         lbl.Text = dr["TenSanPham"].ToString();
+
                         lbl.Name = dr["TenSanPham"].ToString();
+
+
+                        lbl.Name = dr["MaSanPham"].ToString();
+
+                        lbl.Click += new EventHandler(lbl_Click);
+
+
+                        lbl.Size = new Size(100, 60);
+                        lbl.BorderStyle = BorderStyle.FixedSingle;
+
+                        lbl.TextAlign = ContentAlignment.MiddleCenter;
+
+
                         flpnlProduct.Controls.Add(lbl);
                     }
                 }
@@ -55,6 +73,7 @@ namespace Project
             
         }
 
+
         private void flpnlProduct_Paint(object sender, PaintEventArgs e)
         {
 
@@ -63,6 +82,23 @@ namespace Project
         private void lbl1_Click(object sender, EventArgs e)
         {
 
+
+        private void lbl_Click(object sender, EventArgs e)
+        {
+            // Ép kiểu sender về Label
+            Label clickedLabel = sender as Label;
+
+            if (clickedLabel != null)
+            {
+                // Ví dụ: Hiển thị tên sản phẩm ra MessageBox
+                MessageBox.Show("Bạn vừa click vào sản phẩm: " + clickedLabel.Text);
+
+                // Hoặc lấy mã sản phẩm
+                string maSP = clickedLabel.Name;
+
+                // Nếu bạn có thêm thông tin trong Tag thì lấy ra như sau:
+                // var data = clickedLabel.Tag;
+            }
         }
     }
 }

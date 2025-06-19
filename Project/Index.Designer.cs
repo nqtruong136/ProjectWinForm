@@ -59,7 +59,7 @@ namespace Project
             this.báoCáoToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1093, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(1442, 30);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -73,32 +73,32 @@ namespace Project
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(88, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(88, 24);
             this.toolStripMenuItem1.Text = "Bán Hàng";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // quảnLýKhoToolStripMenuItem
             // 
             this.quảnLýKhoToolStripMenuItem.Name = "quảnLýKhoToolStripMenuItem";
-            this.quảnLýKhoToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
+            this.quảnLýKhoToolStripMenuItem.Size = new System.Drawing.Size(105, 24);
             this.quảnLýKhoToolStripMenuItem.Text = "Quản Lý Kho";
             // 
             // quảnLýSảnPhẩmToolStripMenuItem
             // 
             this.quảnLýSảnPhẩmToolStripMenuItem.Name = "quảnLýSảnPhẩmToolStripMenuItem";
-            this.quảnLýSảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.quảnLýSảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
             this.quảnLýSảnPhẩmToolStripMenuItem.Text = "Quản Lý Sản Phẩm";
             // 
             // nhânSựToolStripMenuItem
             // 
             this.nhânSựToolStripMenuItem.Name = "nhânSựToolStripMenuItem";
-            this.nhânSựToolStripMenuItem.Size = new System.Drawing.Size(79, 26);
+            this.nhânSựToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
             this.nhânSựToolStripMenuItem.Text = "Nhân Sự";
             // 
             // báoCáoToolStripMenuItem
             // 
             this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
-            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(79, 26);
+            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
             this.báoCáoToolStripMenuItem.Text = "Báo Cáo";
             // 
             // timerdatetime
@@ -114,16 +114,16 @@ namespace Project
             this.statusLeft,
             this.statusMidle,
             this.statusDatetime});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 564);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 723);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1093, 30);
+            this.statusStrip1.Size = new System.Drawing.Size(1442, 30);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // statusLeft
             // 
             this.statusLeft.Name = "statusLeft";
-            this.statusLeft.Size = new System.Drawing.Size(970, 24);
+            this.statusLeft.Size = new System.Drawing.Size(1059, 24);
             this.statusLeft.Spring = true;
             // 
             // statusMidle
@@ -145,16 +145,16 @@ namespace Project
             // pnlContent
             // 
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContent.Location = new System.Drawing.Point(0, 28);
+            this.pnlContent.Location = new System.Drawing.Point(0, 30);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(1093, 536);
+            this.pnlContent.Size = new System.Drawing.Size(1442, 693);
             this.pnlContent.TabIndex = 3;
             // 
             // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1093, 594);
+            this.ClientSize = new System.Drawing.Size(1442, 753);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip2);
