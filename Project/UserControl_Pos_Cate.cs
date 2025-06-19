@@ -39,7 +39,10 @@ namespace Project
                     {
                         Label lbl = new Label();
                         lbl.Text = dr["TenSanPham"].ToString();
+
                         lbl.Name = dr["MaSanPham"].ToString();
+                        lbl.Click += new EventHandler(lbl_Click);
+
                         flpnlProduct.Controls.Add(lbl);
 
                     }
@@ -54,6 +57,23 @@ namespace Project
             
 
             
+        }
+        private void lbl_Click(object sender, EventArgs e)
+        {
+            // Ép kiểu sender về Label
+            Label clickedLabel = sender as Label;
+
+            if (clickedLabel != null)
+            {
+                // Ví dụ: Hiển thị tên sản phẩm ra MessageBox
+                MessageBox.Show("Bạn vừa click vào sản phẩm: " + clickedLabel.Text);
+
+                // Hoặc lấy mã sản phẩm
+                string maSP = clickedLabel.Name;
+
+                // Nếu bạn có thêm thông tin trong Tag thì lấy ra như sau:
+                // var data = clickedLabel.Tag;
+            }
         }
     }
 }
