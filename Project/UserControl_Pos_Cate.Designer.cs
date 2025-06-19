@@ -100,11 +100,11 @@ namespace Project
             // label4
             // 
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-<<<<<<< HEAD
+
             this.label4.Location = new System.Drawing.Point(441, 0);
-=======
+
             this.label4.Location = new System.Drawing.Point(393, 0);
->>>>>>> 20a1bd1701172803e1a971ac7ac910bfdeebefd2
+
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(140, 124);
             this.label4.TabIndex = 3;
