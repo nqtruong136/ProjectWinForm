@@ -13,7 +13,12 @@ namespace Project
         public int Quantity { get; set; }
         public int UnitPrice { get; set; }
 
-        public int TotalPrice { get; set; }
+        public int TotalPrice {
+            get
+            {
+                return Quantity * UnitPrice;
+            }
+        }
         
     }
 }

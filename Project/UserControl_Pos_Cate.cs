@@ -51,6 +51,7 @@ namespace Project
 
                         lbl.Tag = new Product()
                         {
+                            CodeProduct = dr["MaSanPham"].ToString(),
                             NameProduct = dr["TenSanPham"].ToString(),
                             Quantity = 1,
                             UnitPrice = dr["DonGia"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DonGia"])
@@ -103,7 +104,7 @@ namespace Project
                         UserControl_Pos.tabMap[ctr] = invo;
                     }
                     //ud.AddProduct(maSP, product.NameProduct, product.Quantity, product.UnitPrice) ;
-                    MessageBox.Show("đã thêm");
+                    //MessageBox.Show("đã thêm"); cái này để check coi có thêm vào chưa á
                 }
                 // Nếu bạn có thêm thông tin trong Tag thì lấy ra như sau:
                 // var data = clickedLabel.Tag;
