@@ -67,6 +67,12 @@
     <Compile Include="FormConnect.Designer.cs">
       <DependentUpon>FormConnect.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKho.Designer.cs">
+      <DependentUpon>frmKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="HAMXULY.cs" />
     <Compile Include="Index.cs">
       <SubType>Form</SubType>
@@ -123,6 +129,9 @@
     <EmbeddedResource Include="FormConnect.resx">
       <DependentUpon>FormConnect.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmKho.resx">
+      <DependentUpon>frmKho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Index.resx">
       <DependentUpon>Index.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,7 +178,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-
     <None Include="QLCKDataSet.xsc">
       <DependentUpon>QLCKDataSet.xsd</DependentUpon>
     </None>
@@ -188,7 +196,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bb2938b52defc3940f62f9bdddc37b30.jpg" />
-
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
