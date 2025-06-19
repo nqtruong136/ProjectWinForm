@@ -67,8 +67,13 @@ namespace Project
             this.splitContainer1.Panel2.Controls.Add(this.pnlMainHD);
             this.splitContainer1.Panel2.Controls.Add(this.tabPanel);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
+<<<<<<< HEAD
             this.splitContainer1.Size = new System.Drawing.Size(1236, 714);
             this.splitContainer1.SplitterDistance = 671;
+=======
+            this.splitContainer1.Size = new System.Drawing.Size(1200, 700);
+            this.splitContainer1.SplitterDistance = 651;
+>>>>>>> 20a1bd1701172803e1a971ac7ac910bfdeebefd2
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
@@ -91,9 +96,14 @@ namespace Project
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.pnlCate);
+<<<<<<< HEAD
             this.splitContainer2.Size = new System.Drawing.Size(671, 714);
             this.splitContainer2.SplitterDistance = 58;
             this.splitContainer2.SplitterWidth = 5;
+=======
+            this.splitContainer2.Size = new System.Drawing.Size(651, 700);
+            this.splitContainer2.SplitterDistance = 57;
+>>>>>>> 20a1bd1701172803e1a971ac7ac910bfdeebefd2
             this.splitContainer2.TabIndex = 0;
             // 
             // Cate4
@@ -151,29 +161,47 @@ namespace Project
             this.pnlCate.Location = new System.Drawing.Point(0, 0);
             this.pnlCate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlCate.Name = "pnlCate";
+<<<<<<< HEAD
             this.pnlCate.Size = new System.Drawing.Size(671, 651);
+=======
+            this.pnlCate.Size = new System.Drawing.Size(651, 639);
+>>>>>>> 20a1bd1701172803e1a971ac7ac910bfdeebefd2
             this.pnlCate.TabIndex = 0;
+            this.pnlCate.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCate_Paint);
             // 
             // pnlMainHD
             // 
             this.pnlMainHD.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
             this.pnlMainHD.Location = new System.Drawing.Point(56, 0);
             this.pnlMainHD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlMainHD.Name = "pnlMainHD";
             this.pnlMainHD.Size = new System.Drawing.Size(505, 714);
+=======
+            this.pnlMainHD.Location = new System.Drawing.Point(77, 0);
+            this.pnlMainHD.Name = "pnlMainHD";
+            this.pnlMainHD.Size = new System.Drawing.Size(468, 700);
+>>>>>>> 20a1bd1701172803e1a971ac7ac910bfdeebefd2
             this.pnlMainHD.TabIndex = 1;
             this.pnlMainHD.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMainHD_Paint);
             // 
             // tabPanel
             // 
+            this.tabPanel.AutoScroll = true;
             this.tabPanel.Controls.Add(this.btnAddTab);
             this.tabPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.tabPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.tabPanel.Location = new System.Drawing.Point(0, 0);
             this.tabPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPanel.Name = "tabPanel";
+<<<<<<< HEAD
             this.tabPanel.Size = new System.Drawing.Size(56, 714);
+=======
+            this.tabPanel.Size = new System.Drawing.Size(77, 700);
+>>>>>>> 20a1bd1701172803e1a971ac7ac910bfdeebefd2
             this.tabPanel.TabIndex = 0;
+            this.tabPanel.WrapContents = false;
+            this.tabPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPanel_Paint);
             // 
             // btnAddTab
             // 
@@ -193,7 +221,11 @@ namespace Project
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UserControl_Pos";
+<<<<<<< HEAD
             this.Size = new System.Drawing.Size(1236, 714);
+=======
+            this.Size = new System.Drawing.Size(1200, 700);
+>>>>>>> 20a1bd1701172803e1a971ac7ac910bfdeebefd2
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

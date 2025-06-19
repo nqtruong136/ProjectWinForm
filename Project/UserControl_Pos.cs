@@ -71,7 +71,7 @@ namespace Project
         private void btnAddTab_Click(object sender, EventArgs e)
         {
             var tabItem = new TabItemControl("HĐ " + tabCounter++);
-            tabItem.Width = tabPanel.Width - 5;
+            tabItem.Width = tabPanel.Width - SystemInformation.VerticalScrollBarWidth - 5;
 
             var invoice = new InvoiceControl();
             invoice.Dock = DockStyle.Fill;
@@ -129,6 +129,16 @@ namespace Project
         }
 
         private void pnlMainHD_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tabPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlCate_Paint(object sender, PaintEventArgs e)
         {
 
         }

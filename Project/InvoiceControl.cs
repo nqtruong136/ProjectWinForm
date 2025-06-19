@@ -18,11 +18,15 @@ namespace Project
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             dgvProducts.DataSource = new BindingSource { DataSource = products };
+            dgvProducts.Columns["CodeProduct"].HeaderText = "Mã Hàng";
+            dgvProducts.Columns["NameProduct"].HeaderText = "Tên Hàng";
+            dgvProducts.Columns["Quantity"].HeaderText = "Số Lượng";
+            dgvProducts.Columns["UnitPrice"].HeaderText = "Giá";
         }
 
         private void InvoiceControl_Load(object sender, EventArgs e)
         {
-
+            
         }
         public void AddProduct(string name, int quantity, decimal unitPrice)
         {
