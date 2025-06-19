@@ -41,7 +41,14 @@ namespace Project
                         lbl.Text = dr["TenSanPham"].ToString();
 
                         lbl.Name = dr["MaSanPham"].ToString();
+
                         lbl.Click += new EventHandler(lbl_Click);
+
+
+                        lbl.Size = new Size(100, 60);
+                        lbl.BorderStyle = BorderStyle.FixedSingle;
+
+                        lbl.TextAlign = ContentAlignment.MiddleCenter;
 
                         flpnlProduct.Controls.Add(lbl);
 

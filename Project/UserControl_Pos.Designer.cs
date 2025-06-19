@@ -54,6 +54,7 @@ namespace Project
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -66,8 +67,13 @@ namespace Project
             this.splitContainer1.Panel2.Controls.Add(this.pnlMainHD);
             this.splitContainer1.Panel2.Controls.Add(this.tabPanel);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
+<<<<<<< HEAD
+            this.splitContainer1.Size = new System.Drawing.Size(1236, 714);
+            this.splitContainer1.SplitterDistance = 671;
+=======
             this.splitContainer1.Size = new System.Drawing.Size(1200, 700);
             this.splitContainer1.SplitterDistance = 651;
+>>>>>>> 20a1bd1701172803e1a971ac7ac910bfdeebefd2
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
@@ -75,12 +81,13 @@ namespace Project
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.BackColor = System.Drawing.Color.HotPink;
+            this.splitContainer2.Panel1.BackColor = System.Drawing.Color.White;
             this.splitContainer2.Panel1.Controls.Add(this.Cate4);
             this.splitContainer2.Panel1.Controls.Add(this.Cate3);
             this.splitContainer2.Panel1.Controls.Add(this.Cate2);
@@ -89,15 +96,23 @@ namespace Project
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.pnlCate);
+<<<<<<< HEAD
+            this.splitContainer2.Size = new System.Drawing.Size(671, 714);
+            this.splitContainer2.SplitterDistance = 58;
+            this.splitContainer2.SplitterWidth = 5;
+=======
             this.splitContainer2.Size = new System.Drawing.Size(651, 700);
             this.splitContainer2.SplitterDistance = 57;
+>>>>>>> 20a1bd1701172803e1a971ac7ac910bfdeebefd2
             this.splitContainer2.TabIndex = 0;
             // 
             // Cate4
             // 
-            this.Cate4.Location = new System.Drawing.Point(459, 4);
+            this.Cate4.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.Cate4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cate4.Location = new System.Drawing.Point(516, 0);
             this.Cate4.Name = "Cate4";
-            this.Cate4.Size = new System.Drawing.Size(146, 43);
+            this.Cate4.Size = new System.Drawing.Size(172, 58);
             this.Cate4.TabIndex = 3;
             this.Cate4.Text = "Nước";
             this.Cate4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -105,9 +120,11 @@ namespace Project
             // 
             // Cate3
             // 
-            this.Cate3.Location = new System.Drawing.Point(307, 4);
+            this.Cate3.BackColor = System.Drawing.Color.Chartreuse;
+            this.Cate3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cate3.Location = new System.Drawing.Point(346, 0);
             this.Cate3.Name = "Cate3";
-            this.Cate3.Size = new System.Drawing.Size(146, 43);
+            this.Cate3.Size = new System.Drawing.Size(175, 59);
             this.Cate3.TabIndex = 2;
             this.Cate3.Text = "Món Ăn Kèm";
             this.Cate3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -115,9 +132,11 @@ namespace Project
             // 
             // Cate2
             // 
-            this.Cate2.Location = new System.Drawing.Point(155, 4);
+            this.Cate2.BackColor = System.Drawing.Color.MistyRose;
+            this.Cate2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cate2.Location = new System.Drawing.Point(174, 0);
             this.Cate2.Name = "Cate2";
-            this.Cate2.Size = new System.Drawing.Size(146, 43);
+            this.Cate2.Size = new System.Drawing.Size(175, 58);
             this.Cate2.TabIndex = 1;
             this.Cate2.Text = "Gà Rán Lẻ";
             this.Cate2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -125,9 +144,11 @@ namespace Project
             // 
             // Cate1
             // 
-            this.Cate1.Location = new System.Drawing.Point(3, 4);
+            this.Cate1.BackColor = System.Drawing.Color.Gold;
+            this.Cate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cate1.Location = new System.Drawing.Point(0, 0);
             this.Cate1.Name = "Cate1";
-            this.Cate1.Size = new System.Drawing.Size(146, 43);
+            this.Cate1.Size = new System.Drawing.Size(181, 59);
             this.Cate1.TabIndex = 0;
             this.Cate1.Text = "Combo Gà Rán";
             this.Cate1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -138,17 +159,29 @@ namespace Project
             this.pnlCate.BackColor = System.Drawing.SystemColors.Menu;
             this.pnlCate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCate.Location = new System.Drawing.Point(0, 0);
+            this.pnlCate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlCate.Name = "pnlCate";
+<<<<<<< HEAD
+            this.pnlCate.Size = new System.Drawing.Size(671, 651);
+=======
             this.pnlCate.Size = new System.Drawing.Size(651, 639);
+>>>>>>> 20a1bd1701172803e1a971ac7ac910bfdeebefd2
             this.pnlCate.TabIndex = 0;
             this.pnlCate.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCate_Paint);
             // 
             // pnlMainHD
             // 
             this.pnlMainHD.Dock = System.Windows.Forms.DockStyle.Fill;
+<<<<<<< HEAD
+            this.pnlMainHD.Location = new System.Drawing.Point(56, 0);
+            this.pnlMainHD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pnlMainHD.Name = "pnlMainHD";
+            this.pnlMainHD.Size = new System.Drawing.Size(505, 714);
+=======
             this.pnlMainHD.Location = new System.Drawing.Point(77, 0);
             this.pnlMainHD.Name = "pnlMainHD";
             this.pnlMainHD.Size = new System.Drawing.Size(468, 700);
+>>>>>>> 20a1bd1701172803e1a971ac7ac910bfdeebefd2
             this.pnlMainHD.TabIndex = 1;
             this.pnlMainHD.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMainHD_Paint);
             // 
@@ -159,17 +192,23 @@ namespace Project
             this.tabPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.tabPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.tabPanel.Location = new System.Drawing.Point(0, 0);
+            this.tabPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPanel.Name = "tabPanel";
+<<<<<<< HEAD
+            this.tabPanel.Size = new System.Drawing.Size(56, 714);
+=======
             this.tabPanel.Size = new System.Drawing.Size(77, 700);
+>>>>>>> 20a1bd1701172803e1a971ac7ac910bfdeebefd2
             this.tabPanel.TabIndex = 0;
             this.tabPanel.WrapContents = false;
             this.tabPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPanel_Paint);
             // 
             // btnAddTab
             // 
-            this.btnAddTab.Location = new System.Drawing.Point(3, 3);
+            this.btnAddTab.Location = new System.Drawing.Point(3, 4);
+            this.btnAddTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddTab.Name = "btnAddTab";
-            this.btnAddTab.Size = new System.Drawing.Size(36, 35);
+            this.btnAddTab.Size = new System.Drawing.Size(40, 44);
             this.btnAddTab.TabIndex = 0;
             this.btnAddTab.Text = "+";
             this.btnAddTab.UseVisualStyleBackColor = true;
@@ -177,11 +216,16 @@ namespace Project
             // 
             // UserControl_Pos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UserControl_Pos";
+<<<<<<< HEAD
+            this.Size = new System.Drawing.Size(1236, 714);
+=======
             this.Size = new System.Drawing.Size(1200, 700);
+>>>>>>> 20a1bd1701172803e1a971ac7ac910bfdeebefd2
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
