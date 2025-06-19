@@ -139,6 +139,7 @@ namespace Project
 
                 tabPanel.Controls.Remove(tab);
                 tabMap.Remove(tab);
+                tab.Dispose();
                 UpdateTabNames();
             }
         }

@@ -7,19 +7,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace Project
 {
     public partial class InvoiceControl : UserControl
     {
-        private List<Product> products = new List<Product>();
+        private Random rand = new Random();
+
+        // Các màu nguồn (đang hiển thị) và màu đích (sẽ chuyển tới)
+        private Color sourceColor1, targetColor1;
+        private Color sourceColor2, targetColor2;
+
+        // Các màu hiện tại được tính toán trong mỗi bước chuyển
+        private Color currentColor1, currentColor2;
+        private Color sourceTextColor, targetTextColor, currentTextColor;
+
+        // Quản lý tiến trình animation
+        private int animationDuration = 1500; // Thời gian chuyển màu: 2000ms = 2 giây
+        private int totalSteps;
+        private int currentStep = 0;
+        public List<Product> products = new List<Product>();
         public InvoiceControl()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             dgvProducts.DataSource = new BindingSource { DataSource = products };
             set_start_title_grid();
-            
+            lblTotal.Text = "";
         }
         private void set_start_title_grid()
         {
@@ -32,7 +47,24 @@ namespace Project
         }
         private void InvoiceControl_Load(object sender, EventArgs e)
         {
-            
+            totalSteps = animationDuration / timerColorChange.Interval;
+
+            // Khởi tạo màu nền ban đầu
+            sourceColor1 = this.BackColor;
+            targetColor1 = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
+            sourceColor2 = this.BackColor;
+            targetColor2 = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
+
+            // KHỞI TẠO MÀU CHỮ BAN ĐẦU
+            // Tính độ sáng trung bình của màu đích
+            double avgBrightness = (GetBrightness(targetColor1) + GetBrightness(targetColor2)) / 2.0;
+
+            // Quyết định màu chữ ban đầu
+            targetTextColor = (avgBrightness > 130) ? Color.Black : Color.White;
+            sourceTextColor = targetTextColor; // Ban đầu cho màu nguồn và đích giống nhau
+            currentTextColor = targetTextColor;
+
+            timerColorChange.Start();
         }
         public void AddProduct(string code ,string name, int quantity, int unitPrice)
         {
@@ -77,8 +109,10 @@ namespace Project
             
             dgvProducts.DataSource = products;
             set_start_title_grid();
+            lblTotal.Text = "";
             int total = products.Sum(p => p.TotalPrice);
-            lblTotal.Text = $"Tổng tiền: {total:N0} VNĐ";
+            Console.WriteLine(total);
+            lblTotal.Text = total.ToString();
         }
 
         private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -89,6 +123,93 @@ namespace Project
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void label_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+        public Label lblInvoice
+        {
+            get { return lblThanhToan; }
+            set { lblThanhToan = value; }
+        }
+
+        private void timerColorChange_Tick(object sender, EventArgs e)
+        {
+            if (currentStep <= totalSteps)
+            {
+                double progress = (double)currentStep / totalSteps;
+                progress = progress * progress * (3.0 - 2.0 * progress); // Dùng Easing Function cho mượt
+
+                // Nội suy màu nền (như cũ)
+                currentColor1 = BlendColor(sourceColor1, targetColor1, progress);
+                currentColor2 = BlendColor(sourceColor2, targetColor2, progress);
+
+                // NỘI SUY MÀU CHỮ
+                currentTextColor = BlendColor(sourceTextColor, targetTextColor, progress);
+
+                currentStep++;
+                lblThanhToan.Invalidate();
+            }
+            else
+            {
+                // Khi animation cũ kết thúc, chuẩn bị cho animation mới
+                currentStep = 0;
+
+                // Màu nền: đích cũ -> nguồn mới
+                sourceColor1 = targetColor1;
+                sourceColor2 = targetColor2;
+                targetColor1 = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
+                targetColor2 = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
+
+                // MÀU CHỮ: quyết định màu đích mới và bắt đầu chuyển đổi
+                sourceTextColor = currentTextColor; // Màu nguồn là màu cuối cùng của lần trước
+                double avgBrightness = (GetBrightness(targetColor1) + GetBrightness(targetColor2)) / 2.0;
+                targetTextColor = (avgBrightness > 130) ? Color.Black : Color.White; // Quyết định màu đích mới
+            }
+        }
+        private Color BlendColor(Color source, Color target, double progress)
+        {
+            int r = (int)(source.R + (target.R - source.R) * progress);
+            int g = (int)(source.G + (target.G - source.G) * progress);
+            int b = (int)(source.B + (target.B - source.B) * progress);
+            return Color.FromArgb(r, g, b);
+        }
+        private int GetBrightness(Color c)
+        {
+            // Dùng công thức tính độ sáng tiêu chuẩn (luminance)
+            return (int)Math.Sqrt(
+               c.R * c.R * .241 +
+               c.G * c.G * .691 +
+               c.B * c.B * .068);
+        }
+        private void lblThanhToan_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            using (var brush = new System.Drawing.Drawing2D.LinearGradientBrush(
+                lblThanhToan.ClientRectangle,
+                currentColor1,
+                currentColor2,
+                45f))
+            {
+                e.Graphics.FillRectangle(brush, lblThanhToan.ClientRectangle);
+            }
+
+            // Dùng màu chữ đã được nội suy
+            TextRenderer.DrawText(
+                e.Graphics,
+                lblThanhToan.Text,
+                lblThanhToan.Font,
+                lblThanhToan.ClientRectangle,
+                currentTextColor, // <-- THAY ĐỔI Ở ĐÂY
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
         }
     }
 }
