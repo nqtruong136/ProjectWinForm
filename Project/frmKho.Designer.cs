@@ -120,9 +120,8 @@
             this.LuoiKhoHang.Name = "LuoiKhoHang";
             this.LuoiKhoHang.RowHeadersWidth = 51;
             this.LuoiKhoHang.RowTemplate.Height = 24;
-            this.LuoiKhoHang.Size = new System.Drawing.Size(769, 177);
+            this.LuoiKhoHang.Size = new System.Drawing.Size(712, 177);
             this.LuoiKhoHang.TabIndex = 8;
-            this.LuoiKhoHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LuoiKhoHang_CellContentClick);
             // 
             // btnThem
             // 
@@ -132,7 +131,6 @@
             this.btnThem.TabIndex = 9;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXoa
             // 
@@ -142,7 +140,6 @@
             this.btnXoa.TabIndex = 10;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -152,7 +149,6 @@
             this.btnSua.TabIndex = 11;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnLuu
             // 
@@ -162,7 +158,6 @@
             this.btnLuu.TabIndex = 12;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnHuy
             // 
@@ -205,14 +200,14 @@
             this.pnlkho.Enabled = false;
             this.pnlkho.Location = new System.Drawing.Point(23, 80);
             this.pnlkho.Name = "pnlkho";
-            this.pnlkho.Size = new System.Drawing.Size(787, 150);
+            this.pnlkho.Size = new System.Drawing.Size(739, 150);
             this.pnlkho.TabIndex = 16;
             // 
             // frmKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 543);
+            this.ClientSize = new System.Drawing.Size(800, 543);
             this.Controls.Add(this.pnlkho);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnDong);
@@ -226,7 +221,6 @@
             this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "frmKho";
             this.Text = "frmKho";
-            this.Load += new System.EventHandler(this.frmKho_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LuoiKhoHang)).EndInit();
             this.pnlkho.ResumeLayout(false);
             this.pnlkho.PerformLayout();

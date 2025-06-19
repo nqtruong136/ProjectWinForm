@@ -30,6 +30,8 @@ namespace Project
 
             string query = "select * from SanPham where MaSanPham='"+danhMuc+"'";
 
+            string query = "select * from SanPham where MaDanhMuc='"+danhMuc+"'";
+
             // Giả sử dùng danh sách mẫu
             
             try
@@ -87,8 +89,6 @@ namespace Project
         private void lbl1_Click(object sender, EventArgs e)
         {
 
-        }
-
 
         private void lbl_Click(object sender, EventArgs e)
         {
@@ -118,6 +118,9 @@ namespace Project
 
         }
 
-       
+        private void flpnlProduct_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
