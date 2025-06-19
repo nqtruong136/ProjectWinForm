@@ -12,15 +12,20 @@ namespace Project
 {
     public partial class UserControl_Pos : UserControl
     {
-        Dictionary<TabItemControl, InvoiceControl> tabMap = new Dictionary<TabItemControl, InvoiceControl>();
-        TabItemControl currentActiveTab = null;
-        private int tabCounter = 1;
-
+        public static Dictionary<TabItemControl, InvoiceControl> tabMap = new Dictionary<TabItemControl, InvoiceControl>();
+        public static TabItemControl currentActiveTab = null;
+        private static int tabCounter = 1;
+        public static FlowLayoutPanel tabPanelGlobal; // ← khai báo static nếu cần dùng ở ngoài
+        public static Panel pnlMainGlobal;
         public UserControl_Pos()
         {
             InitializeComponent();
         }
-
+        private void UserControl_Pos_Load(object sender, EventArgs e)
+        {
+            tabPanelGlobal = this.tabPanel;
+            pnlMainGlobal = this.pnlMainHD;
+        }
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
 
@@ -36,6 +41,7 @@ namespace Project
         private void Cate2_Click(object sender, EventArgs e)
         {
             UserControl_Pos_Cate uc = new UserControl_Pos_Cate();
+            uc.ParentPosControl = this;
             uc.LoadDataTheoDanhMuc("2");
             ShowCategoryControl(uc);
         }
@@ -43,6 +49,7 @@ namespace Project
         private void Cate3_Click(object sender, EventArgs e)
         {
             UserControl_Pos_Cate uc = new UserControl_Pos_Cate();
+            uc.ParentPosControl = this;
             uc.LoadDataTheoDanhMuc("3");
             ShowCategoryControl(uc);
         }
@@ -50,6 +57,7 @@ namespace Project
         private void Cate1_Click(object sender, EventArgs e)
         {
             UserControl_Pos_Cate uc = new UserControl_Pos_Cate();
+            uc.ParentPosControl = this;
             uc.LoadDataTheoDanhMuc("1");
             ShowCategoryControl(uc);
 
@@ -58,6 +66,7 @@ namespace Project
         private void Cate4_Click(object sender, EventArgs e)
         {
             UserControl_Pos_Cate uc = new UserControl_Pos_Cate();
+            uc.ParentPosControl = this;
             uc.LoadDataTheoDanhMuc("4");
             ShowCategoryControl(uc);
         }
@@ -68,7 +77,26 @@ namespace Project
             pnlCate.Controls.Add(uc);             // Thêm control mới vào sân khấu
         }
 
-        private void btnAddTab_Click(object sender, EventArgs e)
+
+        public void CreateNewTabWithProduct(Product product)
+        {
+            var tabItem = new TabItemControl("HĐ " + tabCounter++);
+            tabItem.Width = tabPanelGlobal.Width - SystemInformation.VerticalScrollBarWidth - 5;
+
+            var invoice = new InvoiceControl();
+            invoice.Dock = DockStyle.Fill;
+            invoice.AddProduct(product.CodeProduct, product.NameProduct, product.Quantity, product.UnitPrice);
+
+            tabItem.OnTabClick += (s, ev) => ShowTab(tabItem);
+            tabItem.OnTabClose += (s, ev) => CloseTab(tabItem);
+
+            tabPanelGlobal.Controls.Add(tabItem);
+            tabMap[tabItem] = invoice;
+
+            ShowTab(tabItem);
+        }
+
+            public void btnAddTab_Click(object sender, EventArgs e)
         {
             var tabItem = new TabItemControl("HĐ " + tabCounter++);
             tabItem.Width = tabPanel.Width - SystemInformation.VerticalScrollBarWidth - 5;
@@ -142,5 +170,7 @@ namespace Project
         {
 
         }
+
+        
     }
 }

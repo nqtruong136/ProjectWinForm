@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project
 {
-    class Product
+    public partial class Product
     {
         public string CodeProduct { get; set; }
         public string NameProduct { get; set; }

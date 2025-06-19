@@ -13,10 +13,12 @@ namespace Project
 {
     public partial class UserControl_Pos_Cate : UserControl
     {
-        
+        public UserControl_Pos ParentPosControl { get; set; }//dsfsdf
+
         public UserControl_Pos_Cate()
         {
             InitializeComponent();
+            
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -86,8 +88,19 @@ namespace Project
                 string maSP =lbl.Name;
                 if (lbl != null && lbl.Tag is Product product)
                 {
-                    InvoiceControl ud = new InvoiceControl();
-                    ud.AddProduct(maSP, product.NameProduct, product.Quantity, product.UnitPrice) ;
+                    var ctr = UserControl_Pos.currentActiveTab;
+                    if (UserControl_Pos.tabMap.Count == 0 || UserControl_Pos.currentActiveTab == null)
+                    {
+
+                        ParentPosControl.CreateNewTabWithProduct(product);
+                    }
+                    else
+                    {
+                        var invo = UserControl_Pos.tabMap[ctr];
+                        invo.AddProduct(product.CodeProduct, product.NameProduct, product.Quantity, product.UnitPrice);
+                        UserControl_Pos.tabMap[ctr] = invo;
+                    }
+                    //ud.AddProduct(maSP, product.NameProduct, product.Quantity, product.UnitPrice) ;
                     MessageBox.Show("đã thêm");
                 }
                 // Nếu bạn có thêm thông tin trong Tag thì lấy ra như sau:
