@@ -8,10 +8,12 @@ namespace Project
 {
     class Product
     {
+        public string CodeProduct { get; set; }
         public string NameProduct { get; set; }
         public int Quantity { get; set; }
-        public decimal UnitPrice { get; set; }
-        public int hahah { get; set; }
-        public decimal TotalPrice => Quantity * UnitPrice;
+        public int UnitPrice { get; set; }
+
+        public int TotalPrice { get; set; }
+        
     }
 }

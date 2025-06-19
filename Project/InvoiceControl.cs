@@ -18,16 +18,23 @@ namespace Project
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             dgvProducts.DataSource = new BindingSource { DataSource = products };
+
+            dgvProducts.Columns["CodeProduct"].HeaderText = "Mã Hàng";
+            dgvProducts.Columns["NameProduct"].HeaderText = "Tên Hàng";
+            dgvProducts.Columns["Quantity"].HeaderText = "Số Lượng";
+            dgvProducts.Columns["UnitPrice"].HeaderText = "Giá";
+            dgvProducts.Columns["CodeProduct"].Visible = false;
         }
 
         private void InvoiceControl_Load(object sender, EventArgs e)
         {
-
+            
         }
-        public void AddProduct(string name, int quantity, decimal unitPrice)
+        public void AddProduct(string code ,string name, int quantity, int unitPrice)
         {
             var product = new Product
             {
+                CodeProduct = code,
                 NameProduct = name,
                 Quantity = quantity,
                 UnitPrice = unitPrice
@@ -41,8 +48,18 @@ namespace Project
             dgvProducts.DataSource = null;
             dgvProducts.DataSource = products;
 
-            decimal total = products.Sum(p => p.TotalPrice);
+            int total = products.Sum(p => p.TotalPrice);
             lblTotal.Text = $"Tổng tiền: {total:N0} VNĐ";
+        }
+
+        private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
