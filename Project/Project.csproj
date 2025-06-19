@@ -61,7 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
     <Compile Include="FormConnect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,13 +72,6 @@
     </Compile>
     <Compile Include="frmKho.Designer.cs">
       <DependentUpon>frmKho.cs</DependentUpon>
-
-    <Compile Include="frmquanlynv.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmquanlynv.Designer.cs">
-      <DependentUpon>frmquanlynv.cs</DependentUpon>
-
     </Compile>
     <Compile Include="HAMXULY.cs" />
     <Compile Include="Index.cs">
@@ -134,16 +126,11 @@
     <Compile Include="UserControl_Pos_HD.Designer.cs">
       <DependentUpon>UserControl_Pos_HD.cs</DependentUpon>
     </Compile>
-
     <EmbeddedResource Include="FormConnect.resx">
       <DependentUpon>FormConnect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmKho.resx">
       <DependentUpon>frmKho.cs</DependentUpon>
-
-    <EmbeddedResource Include="frmquanlynv.resx">
-      <DependentUpon>frmquanlynv.cs</DependentUpon>
-
     </EmbeddedResource>
     <EmbeddedResource Include="Index.resx">
       <DependentUpon>Index.cs</DependentUpon>
