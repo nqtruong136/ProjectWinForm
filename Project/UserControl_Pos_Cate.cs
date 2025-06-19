@@ -40,6 +40,10 @@ namespace Project
                         Label lbl = new Label();
                         lbl.Text = dr["TenSanPham"].ToString();
                         lbl.Name = dr["MaSanPham"].ToString();
+                        lbl.Size = new Size(100, 60);
+                        lbl.BorderStyle = BorderStyle.FixedSingle;
+
+                        lbl.TextAlign = ContentAlignment.MiddleCenter;
                         flpnlProduct.Controls.Add(lbl);
 
                     }
