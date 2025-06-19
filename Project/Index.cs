@@ -12,7 +12,7 @@ namespace Project
 {
     public partial class Index : Form
     {
-        
+        UserControl_Pos ucPOS ;
         public Index()
         {
             InitializeComponent();
@@ -25,9 +25,16 @@ namespace Project
         }
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            UserControl_Pos uc = new UserControl_Pos();
-            ShowUserControl(uc);
-            
+
+            if (ucPOS == null || ucPOS.IsDisposed)
+            {
+                // Nếu chưa có, hoặc đã bị hủy thì TẠO MỚI MỘT LẦN DUY NHẤT
+                ucPOS = new UserControl_Pos();
+            }
+
+            // Luôn luôn hiển thị cái ucPOS duy nhất đó
+            ShowUserControl(ucPOS);
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)

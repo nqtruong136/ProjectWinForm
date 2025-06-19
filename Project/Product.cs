@@ -6,14 +6,19 @@ using System.Threading.Tasks;
 
 namespace Project
 {
-    class Product
+    public partial class Product
     {
         public string CodeProduct { get; set; }
         public string NameProduct { get; set; }
         public int Quantity { get; set; }
         public int UnitPrice { get; set; }
 
-        public int TotalPrice { get; set; }
+        public int TotalPrice {
+            get
+            {
+                return Quantity * UnitPrice;
+            }
+        }
         
     }
 }
