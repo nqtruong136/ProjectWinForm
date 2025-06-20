@@ -27,14 +27,52 @@ namespace Project
         private int animationDuration = 1500; // Thời gian chuyển màu: 2000ms = 2 giây
         private int totalSteps;
         private int currentStep = 0;
+
         public List<Product> products = new List<Product>();
         public InvoiceControl()
         {
+            
             InitializeComponent();
+            
             this.Dock = DockStyle.Fill;
+            AddDeleteButtonColumn();
             dgvProducts.DataSource = new BindingSource { DataSource = products };
             set_start_title_grid();
+            dgvProducts.RowHeadersVisible = false;
+
+            // 2. GỌI HÀM SET TIÊU ĐỀ CỘT DỮ LIỆU
+            set_start_title_grid();
+
+            // 3. THÊM CỘT NÚT XÓA MỚI
+            
+
             lblTotal.Text = "";
+        }
+        private void AddDeleteButtonColumn()
+        {
+            // Tạo một đối tượng cột kiểu nút bấm
+            DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn();
+
+            // --- Thiết lập các thuộc tính cho cột ---
+
+            // Tên định danh cho cột để gọi trong code
+            deleteColumn.Name = "colDelete";
+
+            // Chữ hiển thị trên tiêu đề của cột
+            deleteColumn.HeaderText = "Thao tác";
+
+            // Chữ hiển thị trên TẤT CẢ các nút trong cột này
+            deleteColumn.Text = "Xóa";
+
+            // Thuộc tính quan trọng: Yêu cầu tất cả các ô nút bấm trong cột
+            // đều sử dụng giá trị của thuộc tính 'Text' ở trên ("Xóa")
+            deleteColumn.UseColumnTextForButtonValue = true;
+
+            // Set độ rộng cho cột
+            deleteColumn.Width = 60;
+
+            // Thêm cột đã tạo vào DataGridView
+            dgvProducts.Columns.Add(deleteColumn);
         }
         private void set_start_title_grid()
         {
@@ -117,7 +155,38 @@ namespace Project
 
         private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Lấy chỉ số cột và dòng đang được nhấn
+            int columnIndex = e.ColumnIndex;
+            int rowIndex = e.RowIndex;
 
+            // Đảm bảo người dùng không nhấn vào tiêu đề (rowIndex < 0)
+            if (rowIndex < 0) return;
+
+            // KIỂM TRA: Chỉ thực hiện hành động nếu người dùng nhấn vào CỘT NÚT XÓA
+            // mà chúng ta đã tạo (có tên là "colDelete")
+            if (dgvProducts.Columns[columnIndex].Name == "colDelete")
+            {
+                // Lấy tên sản phẩm để hiển thị trong thông báo
+                string productName = products[rowIndex].NameProduct;
+
+                // Hiển thị hộp thoại xác nhận (giống như trước)
+                DialogResult result = MessageBox.Show(
+                    $"Bạn có chắc chắn muốn xóa sản phẩm '{productName}' khỏi hóa đơn?",
+                    "Xác nhận xóa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                // Nếu người dùng chọn "Yes"
+                if (result == DialogResult.Yes)
+                {
+                    // Xóa sản phẩm khỏi danh sách products tại vị trí của dòng đã nhấn
+                    products.RemoveAt(rowIndex);
+
+                    // Cập nhật lại DataGridView
+                    RefreshGrid();
+                }
+            }
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -125,15 +194,33 @@ namespace Project
 
         }
 
-        private void label_Click(object sender, EventArgs e)
-        {
 
+
+        private void lblThanhToan_Click (object sender, EventArgs e)
+        {
+            bool hasData = false;
+            foreach (DataGridViewRow row in dgvProducts.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    hasData = true;
+                    break;
+                }
+            }
+            if (hasData)
+            {
+                
+            }
+            else{
+                MessageBox.Show("Chưa Có Sản Phẩm Được Thêm Vào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void dgvProducts_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-
+            
         }
+
         public Label lblInvoice
         {
             get { return lblThanhToan; }
