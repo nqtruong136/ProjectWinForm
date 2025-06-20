@@ -86,6 +86,12 @@
     <Compile Include="InvoiceControl.Designer.cs">
       <DependentUpon>InvoiceControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="KhoHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KhoHang.Designer.cs">
+      <DependentUpon>KhoHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InvoiceControl.resx">
       <DependentUpon>InvoiceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KhoHang.resx">
+      <DependentUpon>KhoHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
