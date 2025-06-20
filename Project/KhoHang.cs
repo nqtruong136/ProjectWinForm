@@ -41,10 +41,7 @@ namespace Project
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtMahang.Text = LuoiKho.CurrentRow.Cells["MaVatTu"].Value.ToString();
-            txtTenhang.Text = LuoiKho.CurrentRow.Cells["TenVatTu"].Value.ToString();
-            txtDVT.Text = LuoiKho.CurrentRow.Cells["DonViTinh"].Value.ToString();
-            txtSoton.Text = LuoiKho.CurrentRow.Cells["SoLuongTon"].Value.ToString();
+            
         }
 
         private void KhoHang_Load(object sender, EventArgs e)
@@ -205,6 +202,14 @@ namespace Project
             bntThem.Enabled = true;
             bntXoa.Enabled = true;
             bntSua.Enabled = true;
+        }
+
+        private void LuoiKho_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtMahang.Text = LuoiKho.CurrentRow.Cells["MaVatTu"].Value.ToString();
+            txtTenhang.Text = LuoiKho.CurrentRow.Cells["TenVatTu"].Value.ToString();
+            txtDVT.Text = LuoiKho.CurrentRow.Cells["DonViTinh"].Value.ToString();
+            txtSoton.Text = LuoiKho.CurrentRow.Cells["SoLuongTon"].Value.ToString();
         }
     }
     

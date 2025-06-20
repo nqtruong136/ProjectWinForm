@@ -58,6 +58,7 @@
             this.LuoiKho.RowTemplate.Height = 24;
             this.LuoiKho.Size = new System.Drawing.Size(690, 186);
             this.LuoiKho.TabIndex = 0;
+            this.LuoiKho.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LuoiKho_CellClick);
             this.LuoiKho.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
@@ -223,7 +224,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LuoiKho);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "KhoHang";
             this.Text = "KhoHang";
             this.Load += new System.EventHandler(this.KhoHang_Load);
