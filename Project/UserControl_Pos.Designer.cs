@@ -156,9 +156,12 @@ namespace Project
             // 
             // pnlMainHD
             // 
-            this.pnlMainHD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMainHD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMainHD.Location = new System.Drawing.Point(68, 0);
             this.pnlMainHD.Name = "pnlMainHD";
+            this.pnlMainHD.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.pnlMainHD.Size = new System.Drawing.Size(417, 560);
             this.pnlMainHD.TabIndex = 1;
             this.pnlMainHD.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMainHD_Paint);
