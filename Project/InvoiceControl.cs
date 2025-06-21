@@ -16,6 +16,8 @@ namespace Project
     {
         private Random rand = new Random();
         int subTotal = 0;
+        private decimal discountAmountRepo = 0;
+        
         // Các màu nguồn (đang hiển thị) và màu đích (sẽ chuyển tới)
         private Color sourceColor1, targetColor1;
         private Color sourceColor2, targetColor2;
@@ -215,7 +217,7 @@ namespace Project
             }
             if (hasData)
             {
-                FormHD ff = new FormHD(this.products);
+                FormHD ff = new FormHD(this.products,this.discountAmountRepo);
                 // Nhớ thêm insert thêm hóa đơn vào csdl
                 ff.ShowDialog();
             }
@@ -299,12 +301,14 @@ namespace Project
                 if (loaiGiamGia == "Percentage")
                 {
                     finalTotal = subTotal - (subTotal * giaTriGiam / 100);
+                    discountAmountRepo = subTotal * giaTriGiam / 100;
                 }
                 else if (loaiGiamGia == "FixedAmount")
                 {
                     finalTotal = subTotal - giaTriGiam;
+                    discountAmountRepo = giaTriGiam;
                 }
-
+                
                 if (finalTotal < 0) finalTotal = 0;
 
                 lblTotal.Text = finalTotal.ToString("N0") + " VNĐ";

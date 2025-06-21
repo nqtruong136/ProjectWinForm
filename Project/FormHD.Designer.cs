@@ -31,13 +31,17 @@ namespace Project
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.ProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnIn = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
             this.lblTB = new System.Windows.Forms.Label();
-            this.ProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ProductBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ProductBindingSource
+            // 
+            this.ProductBindingSource.DataSource = typeof(Project.Product);
             // 
             // reportViewer1
             // 
@@ -48,12 +52,12 @@ namespace Project
             this.reportViewer1.Location = new System.Drawing.Point(40, 12);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(505, 485);
+            this.reportViewer1.Size = new System.Drawing.Size(628, 720);
             this.reportViewer1.TabIndex = 0;
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(570, 249);
+            this.btnIn.Location = new System.Drawing.Point(762, 252);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(82, 38);
             this.btnIn.TabIndex = 1;
@@ -62,7 +66,7 @@ namespace Project
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(696, 249);
+            this.btnHuy.Location = new System.Drawing.Point(888, 252);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(82, 38);
             this.btnHuy.TabIndex = 1;
@@ -74,21 +78,17 @@ namespace Project
             // 
             this.lblTB.AutoSize = true;
             this.lblTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTB.Location = new System.Drawing.Point(593, 187);
+            this.lblTB.Location = new System.Drawing.Point(785, 190);
             this.lblTB.Name = "lblTB";
             this.lblTB.Size = new System.Drawing.Size(59, 20);
             this.lblTB.TabIndex = 2;
             this.lblTB.Text = "label1";
             // 
-            // ProductBindingSource
-            // 
-            this.ProductBindingSource.DataSource = typeof(Project.Product);
-            // 
             // FormHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 509);
+            this.ClientSize = new System.Drawing.Size(1007, 786);
             this.Controls.Add(this.lblTB);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnIn);
