@@ -29,6 +29,43 @@ namespace Project
                 conn = null; 
             }
         }
+
+        public static bool ExecuteQueryWithParameters(string query, DataTable dataTable, params SqlParameter[] parameters)
+        {
+            // Sử dụng 'using' để đảm bảo kết nối luôn được đóng, kể cả khi có lỗi
+            using (SqlConnection connection = new SqlConnection(@"Data Source=172.25.173.248,1433;Initial Catalog=QLCK;User ID=hieu;Password=159753;TrustServerCertificate=True;"))
+            {
+                // Sử dụng 'using' cho SqlCommand và SqlDataAdapter
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Thêm danh sách các tham số vào command
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters);
+                    }
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        try
+                        {
+                            // Mở kết nối
+                            connection.Open();
+                            // Đổ dữ liệu từ CSDL vào DataTable
+                            adapter.Fill(dataTable);
+                            return true; // Thực thi thành công
+                        }
+                        catch (Exception ex)
+                        {
+                            // Nếu có lỗi, hiển thị thông báo
+                            MessageBox.Show("Đã xảy ra lỗi khi truy vấn cơ sở dữ liệu: " + ex.Message);
+                            return false; // Thực thi thất bại
+                        }
+                        // 'using' sẽ tự động đóng kết nối ở đây
+                    }
+                }
+            }
+        }
+
         public static Boolean TruyVan(string query, DataTable dt)
         {
             

@@ -66,38 +66,38 @@ namespace Project
             // hệThốngToolStripMenuItem
             // 
             this.hệThốngToolStripMenuItem.Name = "hệThốngToolStripMenuItem";
-            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(88, 26);
+            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
             this.hệThốngToolStripMenuItem.Text = "Hệ Thống";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(88, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(88, 24);
             this.toolStripMenuItem1.Text = "Bán Hàng";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // quảnLýKhoToolStripMenuItem
             // 
             this.quảnLýKhoToolStripMenuItem.Name = "quảnLýKhoToolStripMenuItem";
-            this.quảnLýKhoToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
+            this.quảnLýKhoToolStripMenuItem.Size = new System.Drawing.Size(105, 24);
             this.quảnLýKhoToolStripMenuItem.Text = "Quản Lý Kho";
             // 
             // quảnLýSảnPhẩmToolStripMenuItem
             // 
             this.quảnLýSảnPhẩmToolStripMenuItem.Name = "quảnLýSảnPhẩmToolStripMenuItem";
-            this.quảnLýSảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.quảnLýSảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
             this.quảnLýSảnPhẩmToolStripMenuItem.Text = "Quản Lý Sản Phẩm";
             // 
             // nhânSựToolStripMenuItem
             // 
             this.nhânSựToolStripMenuItem.Name = "nhânSựToolStripMenuItem";
-            this.nhânSựToolStripMenuItem.Size = new System.Drawing.Size(79, 26);
+            this.nhânSựToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
             this.nhânSựToolStripMenuItem.Text = "Nhân Sự";
             // 
             // báoCáoToolStripMenuItem
             // 
             this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
-            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(79, 26);
+            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
             this.báoCáoToolStripMenuItem.Text = "Báo Cáo";
             // 
             // timerdatetime

@@ -7,14 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
 
 namespace Project
 {
     public partial class FormHD : Form
     {
-        public FormHD()
+        private List<Product> _danhSachSanPham;
+        public FormHD(List<Product> danhSachSanPham)
         {
             InitializeComponent();
+            this._danhSachSanPham = danhSachSanPham;
+        }
+
+        private void FormHD_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.LocalReport.DataSources.Clear();
+
+            // Bước 2: Tạo nguồn dữ liệu mới từ danh sách của bạn
+            ReportDataSource rds = new ReportDataSource("Product_DataSet", _danhSachSanPham);
+
+            // Bước 3: Thêm nguồn dữ liệu vào report
+            this.reportViewer1.LocalReport.DataSources.Add(rds);
+
+            // Bước 4: Làm mới lại report MỘT LẦN ở cuối cùng để hiển thị dữ liệu
+            this.reportViewer1.RefreshReport();
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

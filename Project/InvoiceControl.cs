@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Data.SqlClient;
 
 namespace Project
 {
     public partial class InvoiceControl : UserControl
     {
         private Random rand = new Random();
-
+        int subTotal = 0;
         // Các màu nguồn (đang hiển thị) và màu đích (sẽ chuyển tới)
         private Color sourceColor1, targetColor1;
         private Color sourceColor2, targetColor2;
@@ -43,10 +44,12 @@ namespace Project
             // 2. GỌI HÀM SET TIÊU ĐỀ CỘT DỮ LIỆU
             set_start_title_grid();
 
+
             // 3. THÊM CỘT NÚT XÓA MỚI
             
 
             lblTotal.Text = "";
+            CapNhatKhuyenMai();
         }
         private void AddDeleteButtonColumn()
         {
@@ -127,6 +130,7 @@ namespace Project
             {
                 products.Add(product);
                 
+                
             }
             /*foreach (var producte in products)
             {
@@ -151,6 +155,8 @@ namespace Project
             int total = products.Sum(p => p.TotalPrice);
             Console.WriteLine(total);
             lblTotal.Text = total.ToString();
+            subTotal = total;
+            CapNhatKhuyenMai();
         }
 
         private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -209,7 +215,9 @@ namespace Project
             }
             if (hasData)
             {
-                
+                FormHD ff = new FormHD(this.products);
+                // Nhớ thêm insert thêm hóa đơn vào csdl
+                ff.ShowDialog();
             }
             else{
                 MessageBox.Show("Chưa Có Sản Phẩm Được Thêm Vào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -219,6 +227,88 @@ namespace Project
         private void dgvProducts_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTotal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void CapNhatKhuyenMai()
+        {
+            subTotal = products.Sum(p => p.TotalPrice);
+
+            string query = @"SELECT MaKhuyenMai, TenKhuyenMai FROM KhuyenMai WHERE 
+            TrangThaiHoatDong = 1 
+            AND GETDATE() BETWEEN NgayBatDau AND NgayKetThuc
+            AND (DonHangToiThieu IS NULL OR @subTotal >= DonHangToiThieu)";
+
+            DataTable dtKhuyenMai = new DataTable();
+
+            // === THAY THẾ Ở ĐÂY ===
+            // Tạo một tham số mới
+            SqlParameter paramSubTotal = new SqlParameter("@subTotal", subTotal);
+            // Gọi hàm helper để thực thi
+            HAMXULY.ExecuteQueryWithParameters(query, dtKhuyenMai, paramSubTotal);
+            // ======================
+
+            DataRow noPromoRow = dtKhuyenMai.NewRow();
+            noPromoRow["MaKhuyenMai"] = 0;
+            noPromoRow["TenKhuyenMai"] = "Không áp dụng";
+            dtKhuyenMai.Rows.InsertAt(noPromoRow, 0);
+
+            cboKhuyenMai.DataSource = dtKhuyenMai;
+            cboKhuyenMai.DisplayMember = "TenKhuyenMai";
+            cboKhuyenMai.ValueMember = "MaKhuyenMai";
+        } 
+
+        private void cboKhuyenMai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboKhuyenMai.SelectedValue == null) return; // Tránh lỗi khi đang load dữ liệu
+
+            DataRowView selectedRow = cboKhuyenMai.SelectedItem as DataRowView;
+
+            // 2. Từ dòng dữ liệu đó, truy cập vào giá trị của cột 'MaKhuyenMai' rồi mới convert
+            int selectedMaKM = Convert.ToInt32(selectedRow["MaKhuyenMai"]);
+
+            if (selectedMaKM <= 0)
+            {
+                lblTotal.Text = subTotal.ToString("N0") + " VNĐ";
+                return;
+            }
+
+            string query = "SELECT LoaiGiamGia, GiaTriGiam FROM KhuyenMai WHERE MaKhuyenMai = @maKM";
+            DataTable dtDetail = new DataTable();
+
+            // === THAY THẾ Ở ĐÂY ===
+            SqlParameter paramMaKM = new SqlParameter("@maKM", selectedMaKM);
+            HAMXULY.ExecuteQueryWithParameters(query, dtDetail, paramMaKM);
+            // ======================
+
+            if (dtDetail.Rows.Count > 0)
+            {
+                string loaiGiamGia = dtDetail.Rows[0]["LoaiGiamGia"].ToString();
+                decimal giaTriGiam = Convert.ToDecimal(dtDetail.Rows[0]["GiaTriGiam"]);
+                decimal finalTotal = subTotal;
+
+                if (loaiGiamGia == "Percentage")
+                {
+                    finalTotal = subTotal - (subTotal * giaTriGiam / 100);
+                }
+                else if (loaiGiamGia == "FixedAmount")
+                {
+                    finalTotal = subTotal - giaTriGiam;
+                }
+
+                if (finalTotal < 0) finalTotal = 0;
+
+                lblTotal.Text = finalTotal.ToString("N0") + " VNĐ";
+            }
         }
 
         public Label lblInvoice
