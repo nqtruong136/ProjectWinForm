@@ -53,16 +53,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.25208in</Width>
+                  <Width>1.21875in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.96875in</Width>
+                  <Width>0.93542in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.06041in</Width>
+                  <Width>1.02708in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.06041in</Width>
+                  <Width>1.02708in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -622,7 +622,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=(Sum(Fields!TotalPrice.Value) - CDec(Parameters!GiamGia.Value)) * 0.08</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -690,7 +690,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=(Sum(Fields!TotalPrice.Value) - CDec(Parameters!GiamGia.Value)) * 1.08</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -709,6 +709,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -750,9 +751,9 @@
             </TablixRowHierarchy>
             <DataSetName>Product_DataSet</DataSetName>
             <Top>0.33in</Top>
-            <Left>0.13833in</Left>
+            <Left>0.13333in</Left>
             <Height>1.92498in</Height>
-            <Width>4.34165in</Width>
+            <Width>4.20832in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -760,13 +761,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>99.99995cm</Height>
+        <Height>30cm</Height>
         <Style />
       </Body>
-      <Width>13.64403cm</Width>
+      <Width>11.33682cm</Width>
       <Page>
         <PageHeader>
-          <Height>1in</Height>
+          <Height>2.8in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <Style>
@@ -785,10 +786,10 @@
             </Border>
           </Style>
         </PageFooter>
-        <PageHeight>100cm</PageHeight>
+        <PageHeight>40cm</PageHeight>
         <PageWidth>8cm</PageWidth>
-        <InteractiveHeight>20in</InteractiveHeight>
-        <InteractiveWidth>6in</InteractiveWidth>
+        <InteractiveHeight>30cm</InteractiveHeight>
+        <InteractiveWidth>10cm</InteractiveWidth>
         <LeftMargin>2mm</LeftMargin>
         <RightMargin>2mm</RightMargin>
         <Style />
