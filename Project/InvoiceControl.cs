@@ -42,13 +42,13 @@ namespace Project
             dgvProducts.DataSource = new BindingSource { DataSource = products };
             set_start_title_grid();
             dgvProducts.RowHeadersVisible = false;
+            
 
             // 2. GỌI HÀM SET TIÊU ĐỀ CỘT DỮ LIỆU
-            set_start_title_grid();
 
 
             // 3. THÊM CỘT NÚT XÓA MỚI
-            
+
 
             lblTotal.Text = "";
             CapNhatKhuyenMai();
@@ -156,8 +156,13 @@ namespace Project
             lblTotal.Text = "";
             int total = products.Sum(p => p.TotalPrice);
             Console.WriteLine(total);
-            lblTotal.Text = total.ToString();
+            lblTotal.Text = total.ToString("N0") + " VNĐ";
             subTotal = total;
+
+
+            dgvProducts.Columns[5].DefaultCellStyle.Format = "N0";
+            dgvProducts.Columns[4].DefaultCellStyle.Format = "N0"; // thêm định dang chuỗi thập phân N0
+            
             CapNhatKhuyenMai();
         }
 
@@ -310,9 +315,21 @@ namespace Project
                 }
                 
                 if (finalTotal < 0) finalTotal = 0;
+                if (discountAmountRepo!=0)
+                {
+                    lblsub.Text = subTotal.ToString("N0") + " VNĐ";
 
+
+                    lbldiscount.Text = Convert.ToInt32(discountAmountRepo).ToString("N0") + " VNĐ";
+                    pnlViewDisCount.Visible = true;
+                }
                 lblTotal.Text = finalTotal.ToString("N0") + " VNĐ";
             }
+        }
+
+        private void lbldiscount_Click(object sender, EventArgs e)
+        {
+
         }
 
         public Label lblInvoice
