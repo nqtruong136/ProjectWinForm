@@ -85,6 +85,8 @@ namespace Project
 
             var invoice = new InvoiceControl();
             invoice.Dock = DockStyle.Fill;
+            invoice.ParentPos = this; // 'this' chính là UserControl_Pos hiện tại
+            invoice.ParentTabItem = tabItem;
             invoice.AddProduct(product.CodeProduct, product.NameProduct, product.Quantity, product.UnitPrice);
 
             tabItem.OnTabClick += (s, ev) => ShowTab(tabItem);
@@ -103,6 +105,8 @@ namespace Project
 
             var invoice = new InvoiceControl();
             invoice.Dock = DockStyle.Fill;
+            invoice.ParentPos = this; // 'this' chính là UserControl_Pos hiện tại
+            invoice.ParentTabItem = tabItem;
 
             // Gán sự kiện
             tabItem.OnTabClick += (s, ev) => ShowTab(tabItem);
@@ -114,7 +118,7 @@ namespace Project
             ShowTab(tabItem);
 
         }
-        private void ShowTab(TabItemControl tab)
+        public void ShowTab(TabItemControl tab)
         {
             if (currentActiveTab != null)
                 currentActiveTab.BackColor = SystemColors.Control;
@@ -126,7 +130,7 @@ namespace Project
             pnlMainHD.Controls.Add(tabMap[tab]);
             UpdateTabNames();
         }
-        private void CloseTab(TabItemControl tab)
+        public void CloseTab(TabItemControl tab)
         {
             if (tabMap.ContainsKey(tab))
             {

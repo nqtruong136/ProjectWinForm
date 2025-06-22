@@ -40,7 +40,7 @@ namespace Project
             this.timerdatetime = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLeft = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusMidle = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDatetime = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.menuStrip2.SuspendLayout();
@@ -81,6 +81,7 @@ namespace Project
             this.quảnLýKhoToolStripMenuItem.Name = "quảnLýKhoToolStripMenuItem";
             this.quảnLýKhoToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.quảnLýKhoToolStripMenuItem.Text = "Quản Lý Kho";
+            this.quảnLýKhoToolStripMenuItem.Click += new System.EventHandler(this.quảnLýKhoToolStripMenuItem_Click);
             // 
             // quảnLýSảnPhẩmToolStripMenuItem
             // 
@@ -111,7 +112,7 @@ namespace Project
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLeft,
-            this.statusMidle,
+            this.statusUser,
             this.statusDatetime});
             this.statusStrip1.Location = new System.Drawing.Point(0, 723);
             this.statusStrip1.Name = "statusStrip1";
@@ -122,15 +123,16 @@ namespace Project
             // statusLeft
             // 
             this.statusLeft.Name = "statusLeft";
-            this.statusLeft.Size = new System.Drawing.Size(1319, 24);
+            this.statusLeft.Size = new System.Drawing.Size(1280, 24);
             this.statusLeft.Spring = true;
             // 
-            // statusMidle
+            // statusUser
             // 
-            this.statusMidle.Name = "statusMidle";
-            this.statusMidle.Size = new System.Drawing.Size(47, 24);
-            this.statusMidle.Text = "Midle";
-            this.statusMidle.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.statusUser.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusUser.Name = "statusUser";
+            this.statusUser.Size = new System.Drawing.Size(53, 24);
+            this.statusUser.Text = "Midle";
+            this.statusUser.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // statusDatetime
             // 
@@ -148,6 +150,7 @@ namespace Project
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(1442, 693);
             this.pnlContent.TabIndex = 3;
+            this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
             // 
             // Index
             // 
@@ -158,6 +161,7 @@ namespace Project
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip2);
             this.Name = "Index";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Index";
             this.Load += new System.EventHandler(this.Index_Load);
             this.menuStrip2.ResumeLayout(false);
@@ -180,7 +184,7 @@ namespace Project
         private System.Windows.Forms.Timer timerdatetime;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statusLeft;
-        private System.Windows.Forms.ToolStripStatusLabel statusMidle;
+        private System.Windows.Forms.ToolStripStatusLabel statusUser;
         private System.Windows.Forms.ToolStripStatusLabel statusDatetime;
         private System.Windows.Forms.Panel pnlContent;
     }

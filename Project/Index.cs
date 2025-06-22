@@ -12,10 +12,12 @@ namespace Project
 {
     public partial class Index : Form
     {
+
         UserControl_Pos ucPOS ;
-        public Index()
+        public Index(string nameuser)
         {
             InitializeComponent();
+            statusUser.Text = "Xin Chào '"+nameuser+"'";
         }
         private void ShowUserControl(UserControl uc)
         {
@@ -51,6 +53,16 @@ namespace Project
         }
         
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void quảnLýKhoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlContent_Paint(object sender, PaintEventArgs e)
         {
 
         }

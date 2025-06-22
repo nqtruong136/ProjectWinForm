@@ -14,9 +14,13 @@ namespace Project
 {
     public partial class InvoiceControl : UserControl
     {
+        public UserControl_Pos ParentPos { get; set; }
+        public TabItemControl ParentTabItem { get; set; }
+
         private Random rand = new Random();
         int subTotal = 0;
         private decimal discountAmountRepo = 0;
+        private decimal finalTotalLast;
         
         // Các màu nguồn (đang hiển thị) và màu đích (sẽ chuyển tới)
         private Color sourceColor1, targetColor1;
@@ -42,16 +46,17 @@ namespace Project
             dgvProducts.DataSource = new BindingSource { DataSource = products };
             set_start_title_grid();
             dgvProducts.RowHeadersVisible = false;
-            
+
 
             // 2. GỌI HÀM SET TIÊU ĐỀ CỘT DỮ LIỆU
 
 
             // 3. THÊM CỘT NÚT XÓA MỚI
 
+            
 
             lblTotal.Text = "";
-            CapNhatKhuyenMai();
+            //CapNhatKhuyenMai();
         }
         private void AddDeleteButtonColumn()
         {
@@ -90,6 +95,7 @@ namespace Project
         }
         private void InvoiceControl_Load(object sender, EventArgs e)
         {
+            pnlViewDisCount.Visible = false;
             totalSteps = animationDuration / timerColorChange.Interval;
 
             // Khởi tạo màu nền ban đầu
@@ -159,7 +165,7 @@ namespace Project
             lblTotal.Text = total.ToString("N0") + " VNĐ";
             subTotal = total;
 
-
+            pnlViewDisCount.Visible = false;
             dgvProducts.Columns[5].DefaultCellStyle.Format = "N0";
             dgvProducts.Columns[4].DefaultCellStyle.Format = "N0"; // thêm định dang chuỗi thập phân N0
             
@@ -222,9 +228,53 @@ namespace Project
             }
             if (hasData)
             {
-                FormHD ff = new FormHD(this.products,this.discountAmountRepo);
-                // Nhớ thêm insert thêm hóa đơn vào csdl
-                ff.ShowDialog();
+                DialogResult confirmResult = MessageBox.Show("Bạn có chắc chắn muốn thanh toán hóa đơn này?",
+                                                      "Xác nhận thanh toán",
+                                                      MessageBoxButtons.YesNo,
+                                                      MessageBoxIcon.Question);
+
+
+
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    // --- BẮT ĐẦU PHẦN HOÀN THIỆN ---
+
+                    // Giả sử bạn lấy được mã người dùng đang đăng nhập và lưu vào biến currentUserId
+                    // Tạm thời tôi sẽ gán cứng để bạn test
+                    int currentUserId = 4; // Ví dụ: nhân viên 'NV01' Phạm Minh Tuấn
+
+                    // Lấy mã khuyến mãi đang được chọn từ ComboBox
+                    int? selectedMaKM = null;
+                    if (Convert.ToInt32(cboKhuyenMai.SelectedValue) > 0)
+                    {
+                        selectedMaKM = Convert.ToInt32(cboKhuyenMai.SelectedValue);
+                    }
+
+                    // Gọi hàm helper để lưu hóa đơn
+                    bool luuThanhCong = true; //HAMXULY.LuuHoaDon(currentUserId, this.finalTotalLast, selectedMaKM, this.products);
+
+                    // Kiểm tra kết quả
+                    if (luuThanhCong)
+                    {
+                        MessageBox.Show("Thanh toán và lưu hóa đơn thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Sau khi lưu thành công, hiển thị form report
+                        FormHD ff = new FormHD(products,discountAmountRepo);
+                        ff.ShowDialog();
+
+                        // Chú thích thứ 2: //dùng CloseTab bên UserControl_Pos sẽ được thực hiện sau
+                        if (ParentPos != null && ParentTabItem != null)
+                        {
+                            ParentPos.CloseTab(this.ParentTabItem);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thanh Toán Thất Bại, Hóa Đơn chưa được lưu vào CSDL", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    // --- KẾT THÚC PHẦN HOÀN THIỆN ---
+                }
             }
             else{
                 MessageBox.Show("Chưa Có Sản Phẩm Được Thêm Vào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -282,7 +332,12 @@ namespace Project
 
             // 2. Từ dòng dữ liệu đó, truy cập vào giá trị của cột 'MaKhuyenMai' rồi mới convert
             int selectedMaKM = Convert.ToInt32(selectedRow["MaKhuyenMai"]);
-
+            if(selectedMaKM == 0)
+            {
+                pnlViewDisCount.Visible = false;
+                return;
+            }
+            pnlViewDisCount.Visible = true;
             if (selectedMaKM <= 0)
             {
                 lblTotal.Text = subTotal.ToString("N0") + " VNĐ";
@@ -292,7 +347,7 @@ namespace Project
             string query = "SELECT LoaiGiamGia, GiaTriGiam FROM KhuyenMai WHERE MaKhuyenMai = @maKM";
             DataTable dtDetail = new DataTable();
 
-            // === THAY THẾ Ở ĐÂY ===
+            
             SqlParameter paramMaKM = new SqlParameter("@maKM", selectedMaKM);
             HAMXULY.ExecuteQueryWithParameters(query, dtDetail, paramMaKM);
             // ======================
@@ -307,24 +362,31 @@ namespace Project
                 {
                     finalTotal = subTotal - (subTotal * giaTriGiam / 100);
                     discountAmountRepo = subTotal * giaTriGiam / 100;
+                    finalTotalLast = finalTotal;
+
                 }
                 else if (loaiGiamGia == "FixedAmount")
                 {
                     finalTotal = subTotal - giaTriGiam;
                     discountAmountRepo = giaTriGiam;
+                    finalTotalLast = finalTotal;
                 }
                 
                 if (finalTotal < 0) finalTotal = 0;
                 if (discountAmountRepo!=0)
                 {
-                    lblsub.Text = subTotal.ToString("N0") + " VNĐ";
+                    lblsub.Text = subTotal.ToString("N0");
 
 
-                    lbldiscount.Text = Convert.ToInt32(discountAmountRepo).ToString("N0") + " VNĐ";
+                    lbldiscount.Text = Convert.ToInt32(discountAmountRepo).ToString("N0");
                     pnlViewDisCount.Visible = true;
                 }
                 lblTotal.Text = finalTotal.ToString("N0") + " VNĐ";
             }
+            
+            
+               
+            
         }
 
         private void lbldiscount_Click(object sender, EventArgs e)

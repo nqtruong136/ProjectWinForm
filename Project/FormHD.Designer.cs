@@ -63,6 +63,7 @@ namespace Project
             this.btnIn.TabIndex = 1;
             this.btnIn.Text = "In";
             this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // btnHuy
             // 

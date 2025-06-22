@@ -44,5 +44,10 @@ namespace Project
         {
             this.Close();
         }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
