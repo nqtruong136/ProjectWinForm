@@ -164,6 +164,43 @@ namespace Project
 
             return kq;
         }
+
+        public static bool TruyVan(string query, DataTable dt, params SqlParameter[] parameters)
+        {
+            // Lấy chuỗi kết nối từ nơi đã định nghĩa
+            string connectionString = @"Data Source=172.25.173.248,1433;Initial Catalog=QLCK;User ID=hieu;Password=159753;TrustServerCertificate=True;";
+
+            // Dùng 'using' để đảm bảo kết nối và các đối tượng khác được giải phóng đúng cách
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                // Thêm các tham số vào command nếu có
+                if (parameters != null)
+                {
+                    command.Parameters.AddRange(parameters);
+                }
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    try
+                    {
+                        // Xóa dữ liệu cũ trong DataTable trước khi fill
+                        dt.Clear();
+                        // Đổ dữ liệu từ CSDL vào DataTable
+                        adapter.Fill(dt);
+
+                        // Chức năng cốt lõi: trả về true nếu DataTable có dòng, ngược lại trả về false
+                        return dt.Rows.Count > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Nếu có lỗi, hiển thị thông báo và trả về false
+                        MessageBox.Show("Lỗi khi thực hiện truy vấn: " + ex.Message);
+                        return false;
+                    }
+                }
+            }
+        }
         public static void RunSql(string query){
             SqlCommand cmd = new SqlCommand(query, conn);
             try

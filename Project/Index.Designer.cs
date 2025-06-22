@@ -43,6 +43,9 @@ namespace Project
             this.statusUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDatetime = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.tạoTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đổiMậtKhẩuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +68,10 @@ namespace Project
             // 
             // hệThốngToolStripMenuItem
             // 
+            this.hệThốngToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tạoTàiKhoảnToolStripMenuItem,
+            this.đổiMậtKhẩuToolStripMenuItem,
+            this.đăngXuấtToolStripMenuItem});
             this.hệThốngToolStripMenuItem.Name = "hệThốngToolStripMenuItem";
             this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(88, 26);
             this.hệThốngToolStripMenuItem.Text = "Hệ Thống";
@@ -123,7 +130,7 @@ namespace Project
             // statusLeft
             // 
             this.statusLeft.Name = "statusLeft";
-            this.statusLeft.Size = new System.Drawing.Size(1280, 24);
+            this.statusLeft.Size = new System.Drawing.Size(1313, 24);
             this.statusLeft.Spring = true;
             // 
             // statusUser
@@ -151,6 +158,25 @@ namespace Project
             this.pnlContent.Size = new System.Drawing.Size(1442, 693);
             this.pnlContent.TabIndex = 3;
             this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
+            // 
+            // tạoTàiKhoảnToolStripMenuItem
+            // 
+            this.tạoTàiKhoảnToolStripMenuItem.Name = "tạoTàiKhoảnToolStripMenuItem";
+            this.tạoTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.tạoTàiKhoảnToolStripMenuItem.Text = "Tạo Tài Khoản";
+            // 
+            // đổiMậtKhẩuToolStripMenuItem
+            // 
+            this.đổiMậtKhẩuToolStripMenuItem.Name = "đổiMậtKhẩuToolStripMenuItem";
+            this.đổiMậtKhẩuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.đổiMậtKhẩuToolStripMenuItem.Text = "Đổi Mật Khẩu";
+            // 
+            // đăngXuấtToolStripMenuItem
+            // 
+            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.đăngXuấtToolStripMenuItem.Text = "Đăng Xuất";
+            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
             // Index
             // 
@@ -187,5 +213,8 @@ namespace Project
         private System.Windows.Forms.ToolStripStatusLabel statusUser;
         private System.Windows.Forms.ToolStripStatusLabel statusDatetime;
         private System.Windows.Forms.Panel pnlContent;
+        private System.Windows.Forms.ToolStripMenuItem tạoTàiKhoảnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem đổiMậtKhẩuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
     }
 }

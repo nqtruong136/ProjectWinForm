@@ -12,12 +12,37 @@ namespace Project
 {
     public partial class Index : Form
     {
-
+        public string user;
+        public string codeUser;
+        public string codeRole;
         UserControl_Pos ucPOS ;
-        public Index(string nameuser)
+        public Index(string nameuser,string codeuser,string coderole)
         {
             InitializeComponent();
             statusUser.Text = "Xin Chào '"+nameuser+"'";
+            this.user = nameuser;
+            this.codeRole = coderole;
+            this.codeUser = codeuser;
+            PhanQuyen();
+        }
+        private void PhanQuyen()
+        {
+            // Giả sử: 1 = Admin, 2 = Quản lý, 3 = Nhân viên
+            // Và bạn có các nút: btnNhanVien, btnKho, btnBaoCao
+
+            if (this.codeRole == "1") // Nếu là Admin
+            {
+                // Admin thấy tất cả
+                
+            }
+            else if (this.codeRole == "2") // Nếu là Quản lý
+            {
+                tạoTàiKhoảnToolStripMenuItem.Visible = false;
+            }
+            else // Mặc định là Nhân viên
+            {
+                
+            }
         }
         private void ShowUserControl(UserControl uc)
         {
@@ -65,6 +90,38 @@ namespace Project
         private void pnlContent_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Hiển thị hộp thoại xác nhận
+            DialogResult confirm = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?",
+                                                   "Xác nhận",
+                                                   MessageBoxButtons.YesNo,
+                                                   MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                // 1. Đóng Form Index hiện tại
+                this.Close();
+
+                // 2. Tìm FormLogin trong số các form đang mở bằng tên của nó ("FormLogin")
+                Form loginForm = Application.OpenForms["FormLogin"];
+
+                if (loginForm != null)
+                {
+                    ((FormLogin)loginForm).ResetLoginForm();
+                    // 3. Nếu tìm thấy, hiển thị nó trở lại
+                    loginForm.Show();
+                    
+                }
+                else
+                {
+                    // Trường hợp dự phòng nếu FormLogin đã bị đóng vì lý do nào đó
+                    // thì thoát hoàn toàn ứng dụng.
+                    Application.Exit();
+                }
+            }
         }
     }
 }

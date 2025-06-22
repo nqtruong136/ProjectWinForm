@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -87,6 +88,100 @@ namespace Project
             pnlUnderlinePass.BackColor = Color.Gray;
         }
 
+        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkShowPassword.Checked)
+            {
+                txtPass.PasswordChar= '\0';
+            }
+            else
+            {
+                txtPass.PasswordChar = '*';
+            }
+
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private Boolean KTThongTin()
+        {
+            if (string.IsNullOrEmpty(txtUser.Text))
+            {
+                MessageBox.Show("Bạn chưa Nhập UserName", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUser.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtPass.Text))
+            {
+                MessageBox.Show("Bạn chưa Nhập PassWord", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPass.Focus();
+                return false;
+            }
+            return true;
+        }
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            HAMXULY.Connect();
+
+            if (KTThongTin())
+            {
+                string user = txtUser.Text.Trim();
+                string pass = txtPass.Text.Trim();
+                string query = "SELECT * FROM NguoiDung WHERE TenDangNhap = @tenDN";
+                DataTable dttb = new DataTable();
+
+                SqlParameter paramUser = new SqlParameter("@tenDN", user);
+
+                // Dùng hàm truy vấn có tham số an toàn
+                if (HAMXULY.TruyVan(query, dttb, paramUser))
+                {
+                    // Nếu tìm thấy người dùng, bây giờ ta kiểm tra mật khẩu trong code C#
+                    string dbPass = dttb.Rows[0]["MatKhauMaHoa"].ToString();
+                    if (pass == dbPass)
+                    {
+                        // === ĐĂNG NHẬP THÀNH CÔNG ===
+                        this.Hide(); // Ẩn form Login đi
+
+                        // Lấy thông tin
+                        string hoVaTen = dttb.Rows[0]["HoVaTen"].ToString();
+                        string maNguoiDung = dttb.Rows[0]["MaNguoiDung"].ToString();
+                        string maVaiTro = dttb.Rows[0]["MaVaiTro"].ToString();
+
+                        // Tạo và hiển thị form Index
+                        Index fm = new Index(hoVaTen, maNguoiDung, maVaiTro);
+                        fm.Show(); // Dùng Show() thay vì ShowDialog() để form login có thể bị đóng hoàn toàn
+                    }
+                    else
+                    {
+                        // Tìm thấy user nhưng sai mật khẩu
+                        MessageBox.Show("Sai mật khẩu. Vui lòng thử lại.");
+                        txtPass.Focus();
+                    }
+                }
+                else
+                {
+                    // Không tìm thấy người dùng
+                    MessageBox.Show("Tài khoản không tồn tại.");
+                    txtUser.Focus();
+                }
+
+            }
+        }
+        public void ResetLoginForm()
+        {
+            // Xóa trắng các textbox
+            txtUser.Text = "";
+            txtPass.Text = "";
+
+            // Có thể thêm logic để trả lại placeholder text nếu bạn có dùng
+            // AddPlaceholder(txtUsername, "Nhập tài khoản của bạn");
+            // AddPlaceholder(txtPassword, "Nhập mật khẩu");
+
+            // Di chuyển con trỏ về ô username
+            txtUser.Focus();
+        }
         private void pnlLogin_Paint_1(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;

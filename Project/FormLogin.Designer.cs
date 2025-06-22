@@ -107,6 +107,7 @@ namespace Project
             this.btnThoat.TabIndex = 6;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // txtUser
             // 
@@ -129,6 +130,7 @@ namespace Project
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Đăng Nhập";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblPass
             // 
@@ -163,6 +165,7 @@ namespace Project
             this.chkShowPassword.TabIndex = 4;
             this.chkShowPassword.Text = "Hiển thị mật khẩu";
             this.chkShowPassword.UseVisualStyleBackColor = false;
+            this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
             // 
             // FormLogin
             // 
