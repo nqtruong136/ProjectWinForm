@@ -79,11 +79,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassBuffer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormHD.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormHD.Designer.cs">
       <DependentUpon>FormHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="frmquanlynv.cs">
       <SubType>Form</SubType>
@@ -109,14 +118,6 @@
     </Compile>
     <Compile Include="KhoHang.Designer.cs">
       <DependentUpon>KhoHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Login.cs">
-      <SubType>Form</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
@@ -149,6 +150,9 @@
     <EmbeddedResource Include="FormHD.resx">
       <DependentUpon>FormHD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmquanlynv.resx">
       <DependentUpon>frmquanlynv.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,9 +164,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KhoHang.resx">
       <DependentUpon>KhoHang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
