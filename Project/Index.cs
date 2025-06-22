@@ -37,11 +37,12 @@ namespace Project
             }
             else if (this.codeRole == "2") // Nếu là Quản lý
             {
-                tạoTàiKhoảnToolStripMenuItem.Visible = false;
+                tạoTàiKhoảnToolStripMenuItem.Enabled = false;
             }
             else // Mặc định là Nhân viên
             {
-                
+                quảnLýKhoToolStripMenuItem.Enabled = false;
+                quảnLýSảnPhẩmToolStripMenuItem.Enabled = false;
             }
         }
         private void ShowUserControl(UserControl uc)
@@ -84,7 +85,8 @@ namespace Project
 
         private void quảnLýKhoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            KhoHang kh = new KhoHang();
+            kh.ShowDialog();
         }
 
         private void pnlContent_Paint(object sender, PaintEventArgs e)

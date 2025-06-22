@@ -46,6 +46,9 @@ namespace Project
             this.tạoTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đổiMậtKhẩuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xemHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xemHóaĐơnToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.xemVàChỉnhSửaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -58,11 +61,12 @@ namespace Project
             this.toolStripMenuItem1,
             this.quảnLýKhoToolStripMenuItem,
             this.quảnLýSảnPhẩmToolStripMenuItem,
+            this.xemHóaĐơnToolStripMenuItem,
             this.nhânSựToolStripMenuItem,
             this.báoCáoToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1442, 30);
+            this.menuStrip2.Size = new System.Drawing.Size(1442, 28);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -153,9 +157,9 @@ namespace Project
             // pnlContent
             // 
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContent.Location = new System.Drawing.Point(0, 30);
+            this.pnlContent.Location = new System.Drawing.Point(0, 28);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(1442, 693);
+            this.pnlContent.Size = new System.Drawing.Size(1442, 695);
             this.pnlContent.TabIndex = 3;
             this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
             // 
@@ -177,6 +181,27 @@ namespace Project
             this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng Xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
+            // 
+            // xemHóaĐơnToolStripMenuItem
+            // 
+            this.xemHóaĐơnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xemHóaĐơnToolStripMenuItem1,
+            this.xemVàChỉnhSửaToolStripMenuItem});
+            this.xemHóaĐơnToolStripMenuItem.Name = "xemHóaĐơnToolStripMenuItem";
+            this.xemHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
+            this.xemHóaĐơnToolStripMenuItem.Text = "Hóa Đơn";
+            // 
+            // xemHóaĐơnToolStripMenuItem1
+            // 
+            this.xemHóaĐơnToolStripMenuItem1.Name = "xemHóaĐơnToolStripMenuItem1";
+            this.xemHóaĐơnToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.xemHóaĐơnToolStripMenuItem1.Text = "Xem Hóa Đơn";
+            // 
+            // xemVàChỉnhSửaToolStripMenuItem
+            // 
+            this.xemVàChỉnhSửaToolStripMenuItem.Name = "xemVàChỉnhSửaToolStripMenuItem";
+            this.xemVàChỉnhSửaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.xemVàChỉnhSửaToolStripMenuItem.Text = "Xem Và Chỉnh Sửa";
             // 
             // Index
             // 
@@ -216,5 +241,8 @@ namespace Project
         private System.Windows.Forms.ToolStripMenuItem tạoTàiKhoảnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đổiMậtKhẩuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xemHóaĐơnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xemHóaĐơnToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem xemVàChỉnhSửaToolStripMenuItem;
     }
 }
