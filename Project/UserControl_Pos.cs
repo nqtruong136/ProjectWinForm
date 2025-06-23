@@ -12,6 +12,7 @@ namespace Project
 {
     public partial class UserControl_Pos : UserControl
     {
+        
         public static Dictionary<TabItemControl, InvoiceControl> tabMap = new Dictionary<TabItemControl, InvoiceControl>();
         public static TabItemControl currentActiveTab = null;
         private static int tabCounter = 1;
@@ -19,6 +20,7 @@ namespace Project
         public static Panel pnlMainGlobal;
         public UserControl_Pos()
         {
+            
             InitializeComponent();
         }
         private void UserControl_Pos_Load(object sender, EventArgs e)
