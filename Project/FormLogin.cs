@@ -124,7 +124,7 @@ namespace Project
         private void btnLogin_Click(object sender, EventArgs e)
         {
             HAMXULY.Connect();
-
+            
             if (KTThongTin())
             {
                 string user = txtUser.Text.Trim();
@@ -147,8 +147,11 @@ namespace Project
                         // Lấy thông tin
                         string hoVaTen = dttb.Rows[0]["HoVaTen"].ToString();
                         string maNguoiDung = dttb.Rows[0]["MaNguoiDung"].ToString();
+                        int maNguoiDungg = Convert.ToInt32(dttb.Rows[0]["MaNguoiDung"]);
                         string maVaiTro = dttb.Rows[0]["MaVaiTro"].ToString();
-
+                        int maVaiTroo = Convert.ToInt32(dttb.Rows[0]["MaVaiTro"]);
+                        string tenDangNhap = dttb.Rows[0]["TenDangNhap"].ToString();
+                        CurrentUserSession.SetCurrentUser(maNguoiDungg, hoVaTen, maVaiTroo, tenDangNhap);
                         // Tạo và hiển thị form Index
                         Index fm = new Index(hoVaTen, maNguoiDung, maVaiTro);
                         fm.Show(); // Dùng Show() thay vì ShowDialog() để form login có thể bị đóng hoàn toàn
@@ -169,10 +172,9 @@ namespace Project
 
             }
         }
-        public void ResetLoginForm()
+        public void ResetPass()
         {
             // Xóa trắng các textbox
-            txtUser.Text = "";
             txtPass.Text = "";
 
             // Có thể thêm logic để trả lại placeholder text nếu bạn có dùng
@@ -180,8 +182,11 @@ namespace Project
             // AddPlaceholder(txtPassword, "Nhập mật khẩu");
 
             // Di chuyển con trỏ về ô username
-            txtUser.Focus();
+            txtPass.Focus();
         }
+
+        
+
         private void pnlLogin_Paint_1(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -250,6 +255,7 @@ namespace Project
         public FormLogin()
         {
             InitializeComponent();
+            this.AcceptButton = btnLogin;
         }
 
         
