@@ -13,6 +13,7 @@ namespace Project
 {
     public partial class FormHD : Form
     {
+        private string _namenv;
         private decimal _discountAmount;
         private List<Product> _danhSachSanPham;
         public FormHD(List<Product> danhSachSanPham, decimal discountAmount)
@@ -20,6 +21,7 @@ namespace Project
             InitializeComponent();
             this._danhSachSanPham = danhSachSanPham;
             this._discountAmount = discountAmount;
+            this._namenv = CurrentUserSession.HoVaTen;
         }
 
         private void FormHD_Load(object sender, EventArgs e)
@@ -29,9 +31,10 @@ namespace Project
 
             // Bước 2: Tạo nguồn dữ liệu mới từ danh sách của bạn
             ReportDataSource rds = new ReportDataSource("Product_DataSet", _danhSachSanPham);
-            ReportParameter[] parameters = new ReportParameter[1];
+            ReportParameter[] parameters = new ReportParameter[2];
             
             parameters[0] = new ReportParameter("GiamGia", _discountAmount.ToString("N0"));
+            parameters[1] = new ReportParameter("TenNV", _namenv.ToString());
             
             // Bước 3: Thêm nguồn dữ liệu vào report
             this.reportViewer1.LocalReport.DataSources.Add(rds);
@@ -46,6 +49,11 @@ namespace Project
         }
 
         private void btnIn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reportViewer1_Load(object sender, EventArgs e)
         {
 
         }
