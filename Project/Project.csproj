@@ -82,6 +82,7 @@
     <Compile Include="ClassBuffer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CurrentUserSession.cs" />
     <Compile Include="FormHD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,7 +96,7 @@
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="frmquanlynv.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmquanlynv.Designer.cs">
       <DependentUpon>frmquanlynv.cs</DependentUpon>
@@ -114,7 +115,7 @@
       <DependentUpon>InvoiceControl.cs</DependentUpon>
     </Compile>
     <Compile Include="KhoHang.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KhoHang.Designer.cs">
       <DependentUpon>KhoHang.cs</DependentUpon>

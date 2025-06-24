@@ -241,8 +241,7 @@ namespace Project
                     // --- BẮT ĐẦU PHẦN HOÀN THIỆN ---
 
                     // Giả sử bạn lấy được mã người dùng đang đăng nhập và lưu vào biến currentUserId
-                    // Tạm thời tôi sẽ gán cứng để bạn test
-                    int currentUserId = 4; // Ví dụ: nhân viên 'NV01' Phạm Minh Tuấn
+                    int currentUserId = 4;// Convert.ToInt32(CurrentUserSession.MaNguoiDung);  // Ví dụ: nhân viên 'NV01' Phạm Minh Tuấn
 
                     // Lấy mã khuyến mãi đang được chọn từ ComboBox
                     int? selectedMaKM = null;
@@ -258,7 +257,7 @@ namespace Project
                     if (luuThanhCong)
                     {
                         MessageBox.Show("Thanh toán và lưu hóa đơn thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        
                         // Sau khi lưu thành công, hiển thị form report
                         FormHD ff = new FormHD(products,discountAmountRepo);
                         ff.ShowDialog();
@@ -334,15 +333,15 @@ namespace Project
             int selectedMaKM = Convert.ToInt32(selectedRow["MaKhuyenMai"]);
             if(selectedMaKM == 0)
             {
-                pnlViewDisCount.Visible = false;
+                lblTotal.Text = subTotal.ToString("N0") + " VNĐ";
+                RefreshGrid();
                 return;
             }
-            pnlViewDisCount.Visible = true;
-            if (selectedMaKM <= 0)
+            /*if (selectedMaKM <= 0)
             {
                 lblTotal.Text = subTotal.ToString("N0") + " VNĐ";
                 return;
-            }
+            }*/
 
             string query = "SELECT LoaiGiamGia, GiaTriGiam FROM KhuyenMai WHERE MaKhuyenMai = @maKM";
             DataTable dtDetail = new DataTable();

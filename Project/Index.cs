@@ -12,18 +12,21 @@ namespace Project
 {
     public partial class Index : Form
     {
-        public string user;
+        
         public string codeUser;
         public string codeRole;
         UserControl_Pos ucPOS ;
         public Index(string nameuser,string codeuser,string coderole)
         {
             InitializeComponent();
-            statusUser.Text = "Xin Chào '"+nameuser+"'";
-            this.user = nameuser;
-            this.codeRole = coderole;
-            this.codeUser = codeuser;
-            PhanQuyen();
+            statusUser.Text = "Xin Chào '"+CurrentUserSession.HoVaTen+"'";
+            
+            this.codeRole = CurrentUserSession.MaVaiTro.ToString();
+            this.codeUser = CurrentUserSession.MaNguoiDung.ToString();
+            if (!this.DesignMode)
+            {
+                PhanQuyen();
+            }
         }
         private void PhanQuyen()
         {
@@ -49,19 +52,29 @@ namespace Project
         {
             pnlContent.Controls.Clear();             // Xóa những control hiện tại (ẩn tất cả)
             uc.Dock = DockStyle.Fill;               // Cho UserControl chiếm hết panel
-            pnlContent.Controls.Add(uc);             // Thêm control mới vào sân khấu
+            try
+            {
+                pnlContent.Controls.Add(uc);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi chi tiết: " + ex.Message + "\nStackTrace:\n" + ex.StackTrace);
+            
+            } 
         }
+                       // Thêm control mới vào sân khấu
+        
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
-            if (ucPOS == null || ucPOS.IsDisposed)
+            if (!this.DesignMode)
             {
-                // Nếu chưa có, hoặc đã bị hủy thì TẠO MỚI MỘT LẦN DUY NHẤT
-                ucPOS = new UserControl_Pos();
+                if (ucPOS == null || ucPOS.IsDisposed)
+                {
+                    ucPOS = new UserControl_Pos();
+                }
+                ShowUserControl(ucPOS);
             }
-
-            // Luôn luôn hiển thị cái ucPOS duy nhất đó
-            ShowUserControl(ucPOS);
 
         }
 
@@ -73,9 +86,12 @@ namespace Project
 
         private void Index_Load(object sender, EventArgs e)
         {
-           
-            statusDatetime.ForeColor = Color.Blue;
-            timerdatetime.Start();
+
+            if (!this.DesignMode)
+            {
+                statusDatetime.ForeColor = Color.Blue;
+                timerdatetime.Start();
+            }
         }
         
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -86,7 +102,7 @@ namespace Project
         private void quảnLýKhoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             KhoHang kh = new KhoHang();
-            kh.ShowDialog();
+            ShowUserControl(kh);
         }
 
         private void pnlContent_Paint(object sender, PaintEventArgs e)
@@ -96,6 +112,7 @@ namespace Project
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             // Hiển thị hộp thoại xác nhận
             DialogResult confirm = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?",
                                                    "Xác nhận",
@@ -105,16 +122,20 @@ namespace Project
             if (confirm == DialogResult.Yes)
             {
                 // 1. Đóng Form Index hiện tại
-                this.Close();
+                
 
                 // 2. Tìm FormLogin trong số các form đang mở bằng tên của nó ("FormLogin")
                 Form loginForm = Application.OpenForms["FormLogin"];
 
                 if (loginForm != null)
                 {
-                    ((FormLogin)loginForm).ResetLoginForm();
+
+                    CurrentUserSession.Clear();
+
+                    ((FormLogin)loginForm).ResetPass();
                     // 3. Nếu tìm thấy, hiển thị nó trở lại
                     loginForm.Show();
+                    this.Close();
                     
                 }
                 else
@@ -122,6 +143,39 @@ namespace Project
                     // Trường hợp dự phòng nếu FormLogin đã bị đóng vì lý do nào đó
                     // thì thoát hoàn toàn ứng dụng.
                     Application.Exit();
+                }
+            }
+
+        }
+
+        private void nhânSựToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmquanlynv ff = new frmquanlynv();
+            ShowUserControl(ff);
+        }
+
+        private void Index_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timerdatetime.Stop();
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Hiển thị hộp thoại xác nhận để tăng trải nghiệm người dùng
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát chương trình?",
+                                                      "Xác nhận",
+                                                      MessageBoxButtons.YesNo,
+                                                      MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    // Nếu người dùng chọn "Yes", thoát hoàn toàn ứng dụng.
+                    // Lệnh này sẽ đóng tất cả các form, kể cả FormLogin đang bị ẩn.
+                    Application.Exit();
+                }
+                else
+                {
+                    // Nếu người dùng chọn "No", hủy hành động đóng form.
+                    // Form sẽ không bị đóng lại.
+                    e.Cancel = true;
                 }
             }
         }

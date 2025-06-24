@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class frmquanlynv : Form
+    public partial class frmquanlynv : UserControl
     {
         public frmquanlynv()
         {
             InitializeComponent();
+        }
+
+        private void frmquanlynv_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

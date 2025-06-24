@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class KhoHang : Form
+    public partial class KhoHang : UserControl
     {
         public KhoHang()
         {
@@ -191,7 +191,7 @@ namespace Project
 
         private void bntDong_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
 
         private void bntHuy_Click(object sender, EventArgs e)
