@@ -44,8 +44,8 @@ namespace Project
             }
             else // Mặc định là Nhân viên
             {
-                quảnLýKhoToolStripMenuItem.Enabled = false;
-                quảnLýSảnPhẩmToolStripMenuItem.Enabled = false;
+                quảnLýKhôToolStripMenuItem.Enabled = false;
+                quảnLýSảnPhẩmToolStripMenuItem1.Enabled = false;
             }
         }
         private void ShowUserControl(UserControl uc)
@@ -101,8 +101,7 @@ namespace Project
 
         private void quảnLýKhoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            KhoHang kh = new KhoHang();
-            ShowUserControl(kh);
+            
         }
 
         private void pnlContent_Paint(object sender, PaintEventArgs e)
@@ -150,8 +149,7 @@ namespace Project
 
         private void nhânSựToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmquanlynv ff = new frmquanlynv();
-            ShowUserControl(ff);
+            
         }
 
         private void Index_FormClosing(object sender, FormClosingEventArgs e)
@@ -178,6 +176,53 @@ namespace Project
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void quảnLýHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void quảnLýKhôToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /*step 1*/
+            KhoHang kh = new KhoHang();
+            ShowUserControl(kh);
+        }
+
+        private void quảnLýSảnPhẩmToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            /*step 2*/
+
+        }
+
+        private void quảnLýDoanhThuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /*step 3*/
+        }
+
+        private void quảnLýNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /*step 4*/
+            frmquanlynv ff = new frmquanlynv();
+            ShowUserControl(ff);
+        }
+
+        
+
+        private void xemHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void báoCáoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void xemVàChỉnhSửaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
