@@ -16,5 +16,10 @@ namespace Project
         {
             InitializeComponent();
         }
+
+        private void frmquanlynv_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
