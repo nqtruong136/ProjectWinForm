@@ -130,6 +130,12 @@
     <Compile Include="TabItemControl.Designer.cs">
       <DependentUpon>TabItemControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl_DoanhThu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl_DoanhThu.Designer.cs">
+      <DependentUpon>UserControl_DoanhThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl_Pos.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="TabItemControl.resx">
       <DependentUpon>TabItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl_DoanhThu.resx">
+      <DependentUpon>UserControl_DoanhThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl_Pos.resx">
       <DependentUpon>UserControl_Pos.cs</DependentUpon>

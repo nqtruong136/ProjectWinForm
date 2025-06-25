@@ -12,7 +12,10 @@ namespace Project
 {
     public partial class Index : Form
     {
-        
+
+        private ToolStripMenuItem currentActiveMenuItem = null;
+        private ToolStripMenuItem currentActiveMenuItemchild = null;
+
         public string codeUser;
         public string codeRole;
         UserControl_Pos ucPOS ;
@@ -27,6 +30,79 @@ namespace Project
             {
                 PhanQuyen();
             }
+        }
+
+        // Đặt hàm này trong class Index.cs
+        private ToolStripMenuItem GetTopLevelMenuItem(ToolStripMenuItem menuItem)
+        {
+            if (menuItem == null)
+            {
+                return null;
+            }
+
+            // Nếu Owner của menuItem là MenuStrip, thì nó chính là mục cấp cao nhất
+            if (menuItem.Owner is MenuStrip)
+            {
+                return menuItem;
+            }
+
+            // Nếu không, đi tìm cha của nó (OwnerItem) và lặp lại quá trình
+            // OwnerItem chính là ToolStripMenuItem cha chứa menu con này
+            ToolStripMenuItem parentItem = menuItem.OwnerItem as ToolStripMenuItem;
+            while (parentItem != null && !(parentItem.Owner is MenuStrip))
+            {
+                parentItem = parentItem.OwnerItem as ToolStripMenuItem;
+            }
+
+            return parentItem;
+        }
+
+        private void SetActiveMenuItem(ToolStripMenuItem clickedMenuItem)
+        {
+            // 1. Từ mục menu vừa được click, tìm ra mục cha cấp cao nhất của nó
+            ToolStripMenuItem topLevelParent = GetTopLevelMenuItem(clickedMenuItem);
+
+            // Nếu không tìm thấy (trường hợp hiếm) thì không làm gì cả
+            if (topLevelParent == null) return;
+
+            // 2. Chỉ thay đổi màu sắc nếu mục cha cấp cao nhất này KHÁC với mục đang active hiện tại
+            if (currentActiveMenuItem != topLevelParent)  // coi thử cái current đang chạy có khác với cái cha của thằng đang được chọn hay không, nếu khác thì có nghĩa là tui đang chọn cái khác với cha á 
+            {
+                // 2a. Reset màu của mục đang active cũ (nếu có)
+                if (currentActiveMenuItem != null)  
+                {
+                    currentActiveMenuItem.BackColor = SystemColors.Control;
+
+
+                }
+                
+                
+
+                // 2b. Tô màu cho mục cha cấp cao nhất của menu vừa click
+                topLevelParent.BackColor = Color.LightSkyBlue; 
+                // 2c. Cập nhật lại biến, gán mục cha này làm mục active mới
+                currentActiveMenuItem = topLevelParent;
+                if (clickedMenuItem != topLevelParent)  // cái này để có nghĩa là nếu lúc đầu tui đã nhấn bán hàng rồi thì khi chuyển sang doanh thu thì nó sẽ tô màu cái click
+                {
+                    clickedMenuItem.BackColor = Color.Aqua;
+                    currentActiveMenuItemchild = clickedMenuItem;
+                }
+                currentActiveMenuItemchild = clickedMenuItem; // cái này để gán curent child bằng những cái đã click á, hong có truy ra cha
+
+
+            }
+            else // nếu không khác thì nghĩa là tui đang chọn các thằng con trong menu á
+            {
+                
+                if (currentActiveMenuItemchild != clickedMenuItem)  // cái này tui sẽ coi cái curent con hiện tại đang ở đâu, nếu nó khác với những gì tui đang bấm trong khu vực con thì nó sẽ xóa màu cái curent chill đó
+                {
+                    //MessageBox.Show("Đã bên trong curentActive và reset cái cũ, cái đang chọn '" + clickedMenuItem.Text + "', cái trước đó '" + currentActiveMenuItemchild.Text + "'");
+                    currentActiveMenuItemchild.BackColor = SystemColors.Control;
+                }
+                clickedMenuItem.BackColor = Color.Aqua;  // tô lại màu
+                currentActiveMenuItemchild = clickedMenuItem;
+            }
+            
         }
         private void PhanQuyen()
         {
@@ -66,7 +142,7 @@ namespace Project
         
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            SetActiveMenuItem(toolStripMenuItem1);
             if (!this.DesignMode)
             {
                 if (ucPOS == null || ucPOS.IsDisposed)
@@ -186,6 +262,7 @@ namespace Project
         private void quảnLýKhôToolStripMenuItem_Click(object sender, EventArgs e)
         {
             /*step 1*/
+            SetActiveMenuItem(quảnLýKhôToolStripMenuItem);
             KhoHang kh = new KhoHang();
             ShowUserControl(kh);
         }
@@ -198,12 +275,16 @@ namespace Project
 
         private void quảnLýDoanhThuToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SetActiveMenuItem(quảnLýDoanhThuToolStripMenuItem);
+            UserControl_DoanhThu us = new UserControl_DoanhThu();
+            ShowUserControl(us);
             /*step 3*/
         }
 
         private void quảnLýNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
             /*step 4*/
+            SetActiveMenuItem(quảnLýNhânViênToolStripMenuItem);
             frmquanlynv ff = new frmquanlynv();
             ShowUserControl(ff);
         }
@@ -223,6 +304,11 @@ namespace Project
         private void xemVàChỉnhSửaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void quảnLýToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
