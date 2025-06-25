@@ -162,6 +162,7 @@ namespace Project
 
         private void Index_Load(object sender, EventArgs e)
         {
+            toolStripMenuItem1.PerformClick();
 
             if (!this.DesignMode)
             {
