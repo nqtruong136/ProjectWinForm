@@ -166,7 +166,7 @@
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="lib\SqlServerTypes\Loader.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="TabItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -272,21 +272,23 @@
     <None Include="Resources\trash_icoon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\SqlServerTypes\readme.htm" />
-    <Content Include="lib\SqlServerTypes\x64\msvcr120.dll">
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="lib\SqlServerTypes\x64\SqlServerSpatial140.dll">
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="lib\SqlServerTypes\x86\msvcr120.dll">
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="lib\SqlServerTypes\x86\SqlServerSpatial140.dll">
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="lib\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
