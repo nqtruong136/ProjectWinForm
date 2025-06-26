@@ -55,6 +55,7 @@ namespace Project
             this.label2 = new System.Windows.Forms.Label();
             this.cboNguoiTao = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnl_info_date.SuspendLayout();
@@ -77,6 +78,7 @@ namespace Project
             this.dgvHoaDon.RowTemplate.Height = 24;
             this.dgvHoaDon.Size = new System.Drawing.Size(831, 429);
             this.dgvHoaDon.TabIndex = 0;
+            this.dgvHoaDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDon_CellContentClick);
             // 
             // MaHoaDon
             // 
@@ -121,6 +123,7 @@ namespace Project
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.cboflterHTTT);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.btnTimKiem);
@@ -162,7 +165,7 @@ namespace Project
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(114, 45);
             this.btnTimKiem.TabIndex = 19;
-            this.btnTimKiem.Text = "button1";
+            this.btnTimKiem.Text = "Tìm Kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
@@ -333,6 +336,15 @@ namespace Project
             this.panel2.Size = new System.Drawing.Size(1422, 58);
             this.panel2.TabIndex = 3;
             // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Raleway", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(72, 31);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(303, 44);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Quản Lý Doanh Thu";
+            // 
             // UserControl_DoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -379,5 +391,6 @@ namespace Project
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.ComboBox cboflterHTTT;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

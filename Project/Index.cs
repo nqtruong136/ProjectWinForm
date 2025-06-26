@@ -299,7 +299,11 @@ namespace Project
 
         private void báoCáoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SetActiveMenuItem(báoCáoToolStripMenuItem);
 
+            // Mở Form báo cáo. Dùng Show() để nó hiện ra một cửa sổ riêng.
+            FormBaoCaoDoanhThu formBaoCao = new FormBaoCaoDoanhThu();
+            formBaoCao.Show();
         }
 
         private void xemVàChỉnhSửaToolStripMenuItem_Click(object sender, EventArgs e)

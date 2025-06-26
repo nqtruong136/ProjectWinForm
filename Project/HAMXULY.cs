@@ -67,7 +67,7 @@ namespace Project
             }
         }
 
-        public static bool LuuHoaDon(int maNguoiDung, decimal tongTien, int? maKhuyenMai, List<Product> danhSachSanPham)
+        public static bool LuuHoaDon(int maNguoiDung, decimal tongTien, int? maKhuyenMai, List<Product> danhSachSanPham,int httt)
         {
             // Sử dụng using để đảm bảo kết nối được đóng đúng cách
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -83,8 +83,8 @@ namespace Project
                     // 1. Chuẩn bị câu lệnh INSERT cho bảng HoaDon
                     //    SCOPE_IDENTITY() dùng để lấy ID tự tăng của dòng vừa được chèn vào.
                     string sqlInsertHoaDon = @"
-                    INSERT INTO HoaDon (MaNguoiDung, NgayTaoHoaDon, TongTien, MaKhuyenMai)
-                    VALUES (@maNguoiDung, GETDATE(), @tongTien, @maKhuyenMai);
+                    INSERT INTO HoaDon (MaNguoiDung, NgayTaoHoaDon, TongTien, MaKhuyenMai, HinhThucThanhToan)
+                    VALUES (@maNguoiDung, GETDATE(), @tongTien, @maKhuyenMai,@httt);
                     SELECT SCOPE_IDENTITY();";
 
                     SqlCommand cmdHoaDon = new SqlCommand(sqlInsertHoaDon, connection, transaction);
@@ -92,6 +92,7 @@ namespace Project
                     // 2. Thêm các parameter
                     cmdHoaDon.Parameters.AddWithValue("@maNguoiDung", maNguoiDung);
                     cmdHoaDon.Parameters.AddWithValue("@tongTien", tongTien);
+                    cmdHoaDon.Parameters.AddWithValue("@httt", httt);
 
                     // Xử lý parameter có thể NULL
                     if (maKhuyenMai.HasValue)

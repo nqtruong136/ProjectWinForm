@@ -126,6 +126,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CurrentUserSession.cs" />
+    <Compile Include="FormBaoCaoDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBaoCaoDoanhThu.Designer.cs">
+      <DependentUpon>FormBaoCaoDoanhThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormHD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,16 @@
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLCKDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLCKDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QLCKDataSetHDDoanhThut.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLCKDataSetHDDoanhThut.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="TabItemControl.cs">
       <SubType>UserControl</SubType>
@@ -197,6 +213,10 @@
     <Compile Include="UserControl_Pos_HD.Designer.cs">
       <DependentUpon>UserControl_Pos_HD.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCaoDoanhThuTheoThang.rdlc" />
+    <EmbeddedResource Include="FormBaoCaoDoanhThu.resx">
+      <DependentUpon>FormBaoCaoDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormHD.resx">
       <DependentUpon>FormHD.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,6 +289,28 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="QLCKDataSet.xsc">
+      <DependentUpon>QLCKDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLCKDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLCKDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLCKDataSet.xss">
+      <DependentUpon>QLCKDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLCKDataSetHDDoanhThut.xsc">
+      <DependentUpon>QLCKDataSetHDDoanhThut.xsd</DependentUpon>
+    </None>
+    <None Include="QLCKDataSetHDDoanhThut.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLCKDataSetHDDoanhThut.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLCKDataSetHDDoanhThut.xss">
+      <DependentUpon>QLCKDataSetHDDoanhThut.xsd</DependentUpon>
+    </None>
     <None Include="Resources\trash_icoon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -286,7 +328,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

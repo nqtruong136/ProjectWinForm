@@ -244,7 +244,7 @@ namespace Project
             this.Controls.Add(this.menuStrip2);
             this.Name = "Index";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Index";
+            this.Text = "Manager Store";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Index_FormClosing);
             this.Load += new System.EventHandler(this.Index_Load);
             this.menuStrip2.ResumeLayout(false);

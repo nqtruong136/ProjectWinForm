@@ -226,5 +226,10 @@ namespace Project
         {
 
         }
+
+        private void dgvHoaDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

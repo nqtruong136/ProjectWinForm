@@ -41,6 +41,7 @@ namespace Project
             this.lblPass = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.chkShowPassword = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -167,14 +168,26 @@ namespace Project
             this.chkShowPassword.UseVisualStyleBackColor = false;
             this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label1.Font = new System.Drawing.Font("Raleway", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(-3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(295, 450);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Phần Mềm Quản Lý Cửa Hàng Gà Rán";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlLogin);
             this.Name = "FormLogin";
-            this.Text = "FormLogin";
+            this.Text = "Đăng Nhập";
             this.Load += new System.EventHandler(this.FormLogin_Load);
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
@@ -194,5 +207,6 @@ namespace Project
         private BufferedPanel pnlLogin;
         private System.Windows.Forms.Panel pnlUnderlinePass;
         private System.Windows.Forms.Panel pnlUnderlineUser;
+        private System.Windows.Forms.Label label1;
     }
 }

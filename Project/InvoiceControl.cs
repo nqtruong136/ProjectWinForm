@@ -47,13 +47,21 @@ namespace Project
             set_start_title_grid();
             dgvProducts.RowHeadersVisible = false;
 
+            var items = new[]
+            {
+                new KeyValuePair<string, int>("Chuyển khoản", 1),
+                new KeyValuePair<string, int>("Thanh toán", 2)
+            };
 
+            cboHT.DataSource = items;
+            cboHT.DisplayMember = "Key";    // Hiển thị phần Key
+            cboHT.ValueMember = "Value";
             // 2. GỌI HÀM SET TIÊU ĐỀ CỘT DỮ LIỆU
-
+            cboHT.SelectedValue = 1;
 
             // 3. THÊM CỘT NÚT XÓA MỚI
 
-            
+
 
             lblTotal.Text = "";
             //CapNhatKhuyenMai();
@@ -161,7 +169,7 @@ namespace Project
             set_start_title_grid();
             lblTotal.Text = "";
             int total = products.Sum(p => p.TotalPrice);
-            Console.WriteLine(total);
+            Console.WriteLine("bên trong refresh  '"+total+"'");
             lblTotal.Text = total.ToString("N0") + " VNĐ";
             subTotal = total;
 
@@ -170,6 +178,7 @@ namespace Project
             dgvProducts.Columns[4].DefaultCellStyle.Format = "N0"; // thêm định dang chuỗi thập phân N0
             
             CapNhatKhuyenMai();
+            finalTotalLast = total;
         }
 
         private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -217,6 +226,8 @@ namespace Project
 
         private void lblThanhToan_Click (object sender, EventArgs e)
         {
+            finalTotalLast = Convert.ToDecimal(lblTotal.Text.Replace(" VNĐ", "").Trim().Replace(",", ""));
+            Console.WriteLine( "khi nhấn nút thanh toán thì kết quả là: '"+finalTotalLast+"'");
             bool hasData = false;
             foreach (DataGridViewRow row in dgvProducts.Rows)
             {
@@ -241,7 +252,7 @@ namespace Project
                     // --- BẮT ĐẦU PHẦN HOÀN THIỆN ---
 
                     // Giả sử bạn lấy được mã người dùng đang đăng nhập và lưu vào biến currentUserId
-                    int currentUserId = 4;// Convert.ToInt32(CurrentUserSession.MaNguoiDung);  // Ví dụ: nhân viên 'NV01' Phạm Minh Tuấn
+                    int currentUserId = Convert.ToInt32(CurrentUserSession.MaNguoiDung);  // Ví dụ: nhân viên 'NV01' Phạm Minh Tuấn
 
                     // Lấy mã khuyến mãi đang được chọn từ ComboBox
                     int? selectedMaKM = null;
@@ -249,9 +260,13 @@ namespace Project
                     {
                         selectedMaKM = Convert.ToInt32(cboKhuyenMai.SelectedValue);
                     }
-
+                    
+                    
+                    int ht = (int)cboHT.SelectedValue;
+                        //MessageBox.Show("Giá trị ẩn: " + value);
+                    
                     // Gọi hàm helper để lưu hóa đơn
-                    bool luuThanhCong = true; //HAMXULY.LuuHoaDon(currentUserId, this.finalTotalLast, selectedMaKM, this.products);
+                    bool luuThanhCong = HAMXULY.LuuHoaDon(currentUserId, this.finalTotalLast, selectedMaKM, this.products, ht);
 
                     // Kiểm tra kết quả
                     if (luuThanhCong)
@@ -389,6 +404,11 @@ namespace Project
         }
 
         private void lbldiscount_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
