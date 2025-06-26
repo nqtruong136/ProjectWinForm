@@ -120,8 +120,8 @@ namespace Project
             }
             else // Mặc định là Nhân viên
             {
-                quảnLýKhôToolStripMenuItem.Enabled = false;
-                quảnLýSảnPhẩmToolStripMenuItem1.Enabled = false;
+                quảnLýToolStripMenuItem.Enabled = false;
+                báoCáoToolStripMenuItem.Enabled = false;
             }
         }
         private void ShowUserControl(UserControl uc)
@@ -314,6 +314,26 @@ namespace Project
         private void quảnLýToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormDoiMK fd = new FormDoiMK();
+            DialogResult result = fd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                // Nếu thành công, thực hiện đăng xuất
+                // Đoạn code này giống hệt code trong nút đăng xuất của bạn
+
+
+                Form loginForm = Application.OpenForms["FormLogin"];
+                if (loginForm != null)
+                {
+                    loginForm.Show();
+                }
+
+                this.Close();
+            }
         }
     }
 }

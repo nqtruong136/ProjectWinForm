@@ -83,7 +83,7 @@ namespace Project
 
             DataTable dtSanPham = new DataTable();
             HAMXULY.TruyVan(queryChiTiet, dtSanPham, new SqlParameter("@maHD", this._maHoaDonDeXem));
-            MessageBox.Show("Mã Hóa Đơn là: '"+this._maHoaDonDeXem+"' để lấy chi tiết các sản phẩm");
+            //MessageBox.Show("Mã Hóa Đơn là: '"+this._maHoaDonDeXem+"' để lấy chi tiết các sản phẩm");
             // Nạp dữ liệu vào Report
             this.reportViewer1.LocalReport.DataSources.Clear();
             ReportDataSource rds = new ReportDataSource("DataSet1", dtSanPham);

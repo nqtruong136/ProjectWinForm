@@ -132,6 +132,12 @@
     <Compile Include="FormBaoCaoDoanhThu.Designer.cs">
       <DependentUpon>FormBaoCaoDoanhThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDoiMK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDoiMK.Designer.cs">
+      <DependentUpon>FormDoiMK.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormHD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +227,9 @@
     <EmbeddedResource Include="BaoCaoDoanhThuTheoThang.rdlc" />
     <EmbeddedResource Include="FormBaoCaoDoanhThu.resx">
       <DependentUpon>FormBaoCaoDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDoiMK.resx">
+      <DependentUpon>FormDoiMK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormHD.resx">
       <DependentUpon>FormHD.cs</DependentUpon>

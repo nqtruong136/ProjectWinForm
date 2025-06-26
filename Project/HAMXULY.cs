@@ -67,6 +67,73 @@ namespace Project
             }
         }
 
+
+        public static string GetUserPassword(int maNguoiDung)
+        {
+            string query = "SELECT MatKhauMaHoa FROM dbo.NguoiDung WHERE MaNguoiDung = @maND";
+            DataTable dt = new DataTable();
+            if (TruyVan(query, dt, new SqlParameter("@maND", maNguoiDung)))
+            {
+                return dt.Rows[0]["MatKhauMaHoa"].ToString();
+            }
+            return null;
+        }
+
+        public static bool UpdateUserPassword(int maNguoiDung, string matKhauMoi)
+        {
+            string query = "UPDATE dbo.NguoiDung SET MatKhauMaHoa = @matKhauMoi WHERE MaNguoiDung = @maND";
+
+            SqlParameter paramPass = new SqlParameter("@matKhauMoi", matKhauMoi);
+            SqlParameter paramId = new SqlParameter("@maND", maNguoiDung);
+
+            // Dùng hàm ThucThiLenhCoThamSo mà chúng ta đã tạo (nó trả về số dòng bị ảnh hưởng)
+            if (ThucThiLenhCoThamSo(query, paramPass, paramId) > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static int ThucThiLenhCoThamSo(string query, params SqlParameter[] parameters)
+        {
+            // Chuỗi kết nối đến cơ sở dữ liệu (thay bằng chuỗi kết nối thực tế của bạn)
+            string connectionString = @"Data Source=172.25.173.248,1433;Initial Catalog=QLCK;User ID=hieu;Password=159753;TrustServerCertificate=True;";
+
+            // Sử dụng using để tự động giải phóng tài nguyên
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Thêm các tham số vào lệnh nếu có
+                    if (parameters != null && parameters.Length > 0)
+                    {
+                        command.Parameters.AddRange(parameters);
+                    }
+
+                    try
+                    {
+                        // Mở kết nối
+                        connection.Open();
+                        // Thực thi lệnh và trả về số dòng bị ảnh hưởng
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return rowsAffected;
+                    }
+                    catch (SqlException ex)
+                    {
+                        // Xử lý lỗi (có thể ghi log hoặc thông báo)
+                        Console.WriteLine("Lỗi SQL: " + ex.Message);
+                        return -1; // Trả về -1 để chỉ ra có lỗi
+                    }
+                    finally
+                    {
+                        // Đảm bảo đóng kết nối nếu nó đang mở
+                        if (connection.State == System.Data.ConnectionState.Open)
+                        {
+                            connection.Close();
+                        }
+                    }
+                }
+            }
+        }
         public static int LuuHoaDon(int maNguoiDung, decimal tongTien, int? maKhuyenMai, List<Product> danhSachSanPham,int httt)
         {
             // Sử dụng using để đảm bảo kết nối được đóng đúng cách
