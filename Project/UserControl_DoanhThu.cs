@@ -86,10 +86,11 @@ namespace Project
             {
                 foreach (DataRow row in dt.Rows)
                 {
+                    string formattedDate = Convert.ToDateTime(row["NgayTaoHoaDon"]).ToString("dd/MM/yyyy HH:mm:ss");
                     dgvHoaDon.Rows.Add(
                         row["MaHoaDon"],
                         row["HoVaTen"],
-                        row["NgayTaoHoaDon"],
+                        formattedDate,
                         row["TongTien"]
                     );
                 }
@@ -237,7 +238,7 @@ namespace Project
             if (e.RowIndex >= 0)
             {
                 int maHoaDonDuocChon = Convert.ToInt32(dgvHoaDon.Rows[e.RowIndex].Cells["MaHoaDon"].Value);
-
+                //MessageBox.Show("Mã Hóa Đơn Là: '"+maHoaDonDuocChon+"'");
                 // Chỉ truyền vào một số int, C# sẽ tự động gọi constructor thứ hai
                 FormHD reportForm = new FormHD(maHoaDonDuocChon);
                 reportForm.ShowDialog();

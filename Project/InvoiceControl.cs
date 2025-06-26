@@ -263,18 +263,18 @@ namespace Project
                     
                     
                     int ht = (int)cboHT.SelectedValue;
-                        //MessageBox.Show("Giá trị ẩn: " + value);
-                    
+                    //MessageBox.Show("Giá trị ẩn: " + value);
+
                     // Gọi hàm helper để lưu hóa đơn
-                    bool luuThanhCong = HAMXULY.LuuHoaDon(currentUserId, this.finalTotalLast, selectedMaKM, this.products, ht);
+                    int newMaHoaDon = HAMXULY.LuuHoaDon(currentUserId, this.finalTotalLast, selectedMaKM, this.products, ht);
 
                     // Kiểm tra kết quả
-                    if (luuThanhCong)
+                    if (newMaHoaDon > 0)
                     {
                         MessageBox.Show("Thanh toán và lưu hóa đơn thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         
                         // Sau khi lưu thành công, hiển thị form report
-                        FormHD ff = new FormHD(products,discountAmountRepo);
+                        FormHD ff = new FormHD(newMaHoaDon);
                         ff.ShowDialog();
 
                         // Chú thích thứ 2: //dùng CloseTab bên UserControl_Pos sẽ được thực hiện sau

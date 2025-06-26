@@ -67,7 +67,7 @@ namespace Project
             }
         }
 
-        public static bool LuuHoaDon(int maNguoiDung, decimal tongTien, int? maKhuyenMai, List<Product> danhSachSanPham,int httt)
+        public static int LuuHoaDon(int maNguoiDung, decimal tongTien, int? maKhuyenMai, List<Product> danhSachSanPham,int httt)
         {
             // Sử dụng using để đảm bảo kết nối được đóng đúng cách
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -127,14 +127,14 @@ namespace Project
 
                     // Nếu tất cả các lệnh trên không gây ra lỗi, xác nhận transaction
                     transaction.Commit();
-                    return true; // Trả về true báo hiệu thành công
+                    return newMaHoaDon; // Trả về true báo hiệu thành công
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Lỗi khi lưu hóa đơn: " + ex.Message);
                     // Nếu có bất kỳ lỗi nào xảy ra, hủy bỏ toàn bộ transaction
                     transaction.Rollback();
-                    return false; // Trả về false báo hiệu thất bại
+                    return -1; // Trả về false báo hiệu thất bại
                 }
             }
         }

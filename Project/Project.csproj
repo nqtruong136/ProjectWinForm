@@ -177,6 +177,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLCKDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="QLCKDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLCKDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="QLCKDataSetHDDoanhThut.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -299,6 +304,17 @@
     </None>
     <None Include="QLCKDataSet.xss">
       <DependentUpon>QLCKDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLCKDataSet1.xsc">
+      <DependentUpon>QLCKDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="QLCKDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLCKDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLCKDataSet1.xss">
+      <DependentUpon>QLCKDataSet1.xsd</DependentUpon>
     </None>
     <None Include="QLCKDataSetHDDoanhThut.xsc">
       <DependentUpon>QLCKDataSetHDDoanhThut.xsd</DependentUpon>
