@@ -231,5 +231,17 @@ namespace Project
         {
 
         }
+
+        private void dgvHoaDon_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int maHoaDonDuocChon = Convert.ToInt32(dgvHoaDon.Rows[e.RowIndex].Cells["MaHoaDon"].Value);
+
+                // Chỉ truyền vào một số int, C# sẽ tự động gọi constructor thứ hai
+                FormHD reportForm = new FormHD(maHoaDonDuocChon);
+                reportForm.ShowDialog();
+            }
+        }
     }
 }

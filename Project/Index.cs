@@ -303,7 +303,7 @@ namespace Project
 
             // Mở Form báo cáo. Dùng Show() để nó hiện ra một cửa sổ riêng.
             FormBaoCaoDoanhThu formBaoCao = new FormBaoCaoDoanhThu();
-            formBaoCao.Show();
+            formBaoCao.ShowDialog();
         }
 
         private void xemVàChỉnhSửaToolStripMenuItem_Click(object sender, EventArgs e)

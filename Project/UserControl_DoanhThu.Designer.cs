@@ -36,6 +36,7 @@ namespace Project
             this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.cboflterHTTT = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
@@ -55,7 +56,6 @@ namespace Project
             this.label2 = new System.Windows.Forms.Label();
             this.cboNguoiTao = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnl_info_date.SuspendLayout();
@@ -79,6 +79,7 @@ namespace Project
             this.dgvHoaDon.Size = new System.Drawing.Size(831, 429);
             this.dgvHoaDon.TabIndex = 0;
             this.dgvHoaDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDon_CellContentClick);
+            this.dgvHoaDon.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDon_CellDoubleClick);
             // 
             // MaHoaDon
             // 
@@ -140,6 +141,15 @@ namespace Project
             this.panel1.Size = new System.Drawing.Size(1422, 635);
             this.panel1.TabIndex = 2;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Raleway", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(72, 31);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(303, 44);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Quản Lý Doanh Thu";
             // 
             // cboflterHTTT
             // 
@@ -335,15 +345,6 @@ namespace Project
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1422, 58);
             this.panel2.TabIndex = 3;
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Raleway", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(72, 31);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(303, 44);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Quản Lý Doanh Thu";
             // 
             // UserControl_DoanhThu
             // 
