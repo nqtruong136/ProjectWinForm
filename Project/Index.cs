@@ -116,7 +116,7 @@ namespace Project
             }
             else if (this.codeRole == "2") // Nếu là Quản lý
             {
-                tạoTàiKhoảnToolStripMenuItem.Enabled = false;
+                quảnLýNgườiDùngToolStripMenuItem.Enabled = false;
             }
             else // Mặc định là Nhân viên
             {
@@ -206,11 +206,17 @@ namespace Project
                 if (loginForm != null)
                 {
 
+                    
+                    if (HAMXULY.UpdateStatus(CurrentUserSession.MaNguoiDung.ToString(), "0") > 0)
+                    {
+                        MessageBox.Show("Cập Nhật Trạng Thái Thành Công '"+ CurrentUserSession.MaNguoiDung.ToString() + "'");
+                    }
+                    else { MessageBox.Show("Cập Nhật Trạng Thái Thất Bại"); }
                     CurrentUserSession.Clear();
-
                     ((FormLogin)loginForm).ResetPass();
                     // 3. Nếu tìm thấy, hiển thị nó trở lại
                     loginForm.Show();
+                    MessageBox.Show("Đang chuẩn bị đóng form");
                     this.Close();
                     
                 }
@@ -232,7 +238,7 @@ namespace Project
         private void Index_FormClosing(object sender, FormClosingEventArgs e)
         {
             timerdatetime.Stop();
-            if (e.CloseReason == CloseReason.UserClosing)
+            /*if (e.CloseReason == CloseReason.UserClosing)
             {
                 // Hiển thị hộp thoại xác nhận để tăng trải nghiệm người dùng
                 DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát chương trình?",
@@ -252,7 +258,7 @@ namespace Project
                     // Form sẽ không bị đóng lại.
                     e.Cancel = true;
                 }
-            }
+            }*/
         }
 
         private void quảnLýHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
@@ -334,6 +340,12 @@ namespace Project
 
                 this.Close();
             }
+        }
+
+        private void quảnLýNgườiDùngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_QL_ND fm = new Form_QL_ND();
+            fm.ShowDialog();
         }
     }
 }
