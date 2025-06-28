@@ -13,14 +13,15 @@ namespace Project
         public static string HoVaTen { get; private set; }
         public static int MaVaiTro { get; private set; }
         public static string TenDangNhap { get; private set; }
-
+        public static string Status { get; set; }
         // Phương thức để gán thông tin khi đăng nhập thành công
-        public static void SetCurrentUser(int maNguoiDung, string hoVaTen, int maVaiTro, string tenDangNhap)
+        public static void SetCurrentUser(int maNguoiDung, string hoVaTen, int maVaiTro, string tenDangNhap, string status)
         {
             MaNguoiDung = maNguoiDung;
             HoVaTen = hoVaTen;
             MaVaiTro = maVaiTro;
             TenDangNhap = tenDangNhap;
+            Status = status;
         }
 
         // Phương thức để xóa thông tin khi đăng xuất

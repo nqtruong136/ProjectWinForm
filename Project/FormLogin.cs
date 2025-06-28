@@ -137,36 +137,51 @@ namespace Project
                 // Dùng hàm truy vấn có tham số an toàn
                 if (HAMXULY.TruyVan(query, dttb, paramUser))
                 {
+                    string status = dttb.Rows[0]["TrangThaiHoatDong"].ToString();
+                    Console.WriteLine(status);
                     // Nếu tìm thấy người dùng, bây giờ ta kiểm tra mật khẩu trong code C#
-                    string dbPass = dttb.Rows[0]["MatKhauMaHoa"].ToString();
-                    if (pass == dbPass)
-                    {
-                        // === ĐĂNG NHẬP THÀNH CÔNG ===
-                        this.Hide(); // Ẩn form Login đi
+                    if (status == "False") {
+                        string dbPass = dttb.Rows[0]["MatKhauMaHoa"].ToString();
+                        
+                        
 
-                        // Lấy thông tin
-                        string hoVaTen = dttb.Rows[0]["HoVaTen"].ToString();
-                        string maNguoiDung = dttb.Rows[0]["MaNguoiDung"].ToString();
-                        int maNguoiDungg = Convert.ToInt32(dttb.Rows[0]["MaNguoiDung"]);
-                        string maVaiTro = dttb.Rows[0]["MaVaiTro"].ToString();
-                        int maVaiTroo = Convert.ToInt32(dttb.Rows[0]["MaVaiTro"]);
-                        string tenDangNhap = dttb.Rows[0]["TenDangNhap"].ToString();
-                        CurrentUserSession.SetCurrentUser(maNguoiDungg, hoVaTen, maVaiTroo, tenDangNhap);
-                        // Tạo và hiển thị form Index
-                        Index fm = new Index(hoVaTen, maNguoiDung, maVaiTro);
-                        fm.Show(); // Dùng Show() thay vì ShowDialog() để form login có thể bị đóng hoàn toàn
+                        if (pass == dbPass)
+                        {
+                            // === ĐĂNG NHẬP THÀNH CÔNG ===
+                            this.Hide(); // Ẩn form Login đi
+
+                            // Lấy thông tin
+                            string hoVaTen = dttb.Rows[0]["HoVaTen"].ToString();
+                            string maNguoiDung = dttb.Rows[0]["MaNguoiDung"].ToString();
+                            int maNguoiDungg = Convert.ToInt32(dttb.Rows[0]["MaNguoiDung"]);
+                            string maVaiTro = dttb.Rows[0]["MaVaiTro"].ToString();
+                            int maVaiTroo = Convert.ToInt32(dttb.Rows[0]["MaVaiTro"]);
+                            string tenDangNhap = dttb.Rows[0]["TenDangNhap"].ToString();
+                            
+                            if (HAMXULY.UpdateStatus(maNguoiDungg.ToString(), "1")>0) ///////////////
+                            {
+                                MessageBox.Show("Cập Nhật Trạng Thái Thành Công");
+                            }
+                            else { MessageBox.Show("Cập Nhật Trạng Thái Thất Bại"); }
+
+                            CurrentUserSession.SetCurrentUser(maNguoiDungg, hoVaTen, maVaiTroo, tenDangNhap,"True");
+                            // Tạo và hiển thị form Index
+                            Index fm = new Index(hoVaTen, maNguoiDung, maVaiTro);
+                            fm.Show(); // Dùng Show() thay vì ShowDialog() để form login có thể bị đóng hoàn toàn
+                        }
+                        else
+                        {
+                            // Tìm thấy user nhưng sai mật khẩu
+                            MessageBox.Show("Sai mật khẩu. Vui lòng thử lại.");
+                            txtPass.Focus();
+                        }
                     }
-                    else
-                    {
-                        // Tìm thấy user nhưng sai mật khẩu
-                        MessageBox.Show("Sai mật khẩu. Vui lòng thử lại.");
-                        txtPass.Focus();
-                    }
+                    else { MessageBox.Show("Tài Khoản Đã Được Đăng Nhập Tại Nơi Khác. Vui Lòng Đăng Xuất Để Tiếp Tục Đăng Nhập "); txtUser.Focus() ; }
                 }
                 else
                 {
                     // Không tìm thấy người dùng
-                    MessageBox.Show("Tài khoản không tồn tại.");
+                    MessageBox.Show("Tài khoản không tồn tại ");
                     txtUser.Focus();
                 }
 

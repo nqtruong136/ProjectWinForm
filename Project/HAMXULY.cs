@@ -93,6 +93,24 @@ namespace Project
             }
             return false;
         }
+
+        public static int UpdateStatus(string ma, string Status)
+        {
+            string trangthai = (Status=="1") ? "1" : "0";
+            string update = "Update NguoiDung Set TrangThaiHoatDong=@status Where MaNguoiDung = @ma";
+            SqlParameter[] pa = new SqlParameter[2] {
+                new SqlParameter("@status",trangthai),
+                new SqlParameter("@ma", ma)
+            };
+            if (ThucThiLenhCoThamSo(update, pa)>0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public static int ThucThiLenhCoThamSo(string query, params SqlParameter[] parameters)
         {
             // Chuỗi kết nối đến cơ sở dữ liệu (thay bằng chuỗi kết nối thực tế của bạn)

@@ -12,7 +12,7 @@ namespace Project
 {
     public partial class Index : Form
     {
-
+        private bool xacnhandongform = false;
         private ToolStripMenuItem currentActiveMenuItem = null;
         private ToolStripMenuItem currentActiveMenuItemchild = null;
 
@@ -211,12 +211,12 @@ namespace Project
                     {
                         MessageBox.Show("Cập Nhật Trạng Thái Thành Công '"+ CurrentUserSession.MaNguoiDung.ToString() + "'");
                     }
-                    else { MessageBox.Show("Cập Nhật Trạng Thái Thất Bại"); }
+                    
                     CurrentUserSession.Clear();
                     ((FormLogin)loginForm).ResetPass();
                     // 3. Nếu tìm thấy, hiển thị nó trở lại
                     loginForm.Show();
-                    MessageBox.Show("Đang chuẩn bị đóng form");
+                    xacnhandongform = false;
                     this.Close();
                     
                 }
@@ -237,9 +237,11 @@ namespace Project
 
         private void Index_FormClosing(object sender, FormClosingEventArgs e)
         {
-            timerdatetime.Stop();
-            /*if (e.CloseReason == CloseReason.UserClosing)
+            if (xacnhandongform)
             {
+
+
+
                 // Hiển thị hộp thoại xác nhận để tăng trải nghiệm người dùng
                 DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát chương trình?",
                                                       "Xác nhận",
@@ -250,15 +252,32 @@ namespace Project
                 {
                     // Nếu người dùng chọn "Yes", thoát hoàn toàn ứng dụng.
                     // Lệnh này sẽ đóng tất cả các form, kể cả FormLogin đang bị ẩn.
+                    timerdatetime.Stop();
+                    if (HAMXULY.UpdateStatus(CurrentUserSession.MaNguoiDung.ToString(), "0") > 0)
+                    {
+                        MessageBox.Show("Cập Nhật Trạng Thái Thành Công '" + CurrentUserSession.MaNguoiDung.ToString() + "'");
+                    }
+                    CurrentUserSession.Clear();
                     Application.Exit();
                 }
                 else
                 {
                     // Nếu người dùng chọn "No", hủy hành động đóng form.
                     // Form sẽ không bị đóng lại.
-                    e.Cancel = true;
+                    e.Cancel = false;
                 }
-            }*/
+            }
+            else
+            {
+                // chia ra 2 cách đóng form dựa trên tắt form và đăng xuất, cách đây là tắt form
+                timerdatetime.Stop();
+                if (HAMXULY.UpdateStatus(CurrentUserSession.MaNguoiDung.ToString(), "0") > 0)
+                {
+                    MessageBox.Show("Cập Nhật Trạng Thái Thành Công '" + CurrentUserSession.MaNguoiDung.ToString() + "'");
+                }
+                Application.Exit();
+            }
+           
         }
 
         private void quảnLýHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
