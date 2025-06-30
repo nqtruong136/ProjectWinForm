@@ -160,7 +160,7 @@ namespace Project
                             
                             if (HAMXULY.UpdateStatus(maNguoiDungg.ToString(), "1")>0) ///////////////
                             {
-                                MessageBox.Show("Cập Nhật Trạng Thái Thành Công");
+                                //MessageBox.Show("Cập Nhật Trạng Thái Thành Công");
                             }
                             else { MessageBox.Show("Cập Nhật Trạng Thái Thất Bại"); }
 

@@ -156,6 +156,12 @@
     <Compile Include="Form_QL_ND.Designer.cs">
       <DependentUpon>Form_QL_ND.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_QL_ND_CT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_QL_ND_CT.Designer.cs">
+      <DependentUpon>Form_QL_ND_CT.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmquanlynv.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -245,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_QL_ND.resx">
       <DependentUpon>Form_QL_ND.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_QL_ND_CT.resx">
+      <DependentUpon>Form_QL_ND_CT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmquanlynv.resx">
       <DependentUpon>frmquanlynv.cs</DependentUpon>

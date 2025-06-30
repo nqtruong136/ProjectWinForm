@@ -209,7 +209,7 @@ namespace Project
                     
                     if (HAMXULY.UpdateStatus(CurrentUserSession.MaNguoiDung.ToString(), "0") > 0)
                     {
-                        MessageBox.Show("Cập Nhật Trạng Thái Thành Công '"+ CurrentUserSession.MaNguoiDung.ToString() + "'");
+                        //MessageBox.Show("Cập Nhật Trạng Thái Thành Công '"+ CurrentUserSession.MaNguoiDung.ToString() + "'");
                     }
                     
                     CurrentUserSession.Clear();
@@ -255,9 +255,9 @@ namespace Project
                     timerdatetime.Stop();
                     if (HAMXULY.UpdateStatus(CurrentUserSession.MaNguoiDung.ToString(), "0") > 0)
                     {
-                        MessageBox.Show("Cập Nhật Trạng Thái Thành Công '" + CurrentUserSession.MaNguoiDung.ToString() + "'");
+                        CurrentUserSession.Clear();
                     }
-                    CurrentUserSession.Clear();
+                    
                     Application.Exit();
                 }
                 else
@@ -273,7 +273,7 @@ namespace Project
                 timerdatetime.Stop();
                 if (HAMXULY.UpdateStatus(CurrentUserSession.MaNguoiDung.ToString(), "0") > 0)
                 {
-                    MessageBox.Show("Cập Nhật Trạng Thái Thành Công '" + CurrentUserSession.MaNguoiDung.ToString() + "'");
+                    //MessageBox.Show("Cập Nhật Trạng Thái Thành Công '" + CurrentUserSession.MaNguoiDung.ToString() + "'");
                 }
                 Application.Exit();
             }

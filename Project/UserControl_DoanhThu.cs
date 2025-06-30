@@ -94,6 +94,7 @@ namespace Project
                         row["TongTien"]
                     );
                 }
+                dgvHoaDon.ColumnHeadersDefaultCellStyle.BackColor = Color.Cyan;
             }
         }
 
