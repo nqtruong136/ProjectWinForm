@@ -12,7 +12,7 @@ namespace Project
 {
     public partial class Index : Form
     {
-        private bool xacnhandongform = false;
+        private bool xacnhandongform = true;
         private ToolStripMenuItem currentActiveMenuItem = null;
         private ToolStripMenuItem currentActiveMenuItemchild = null;
 
@@ -240,7 +240,7 @@ namespace Project
             if (xacnhandongform)
             {
 
-
+                //MessageBox.Show("1. Đang chạy FormClosing của Index...");
 
                 // Hiển thị hộp thoại xác nhận để tăng trải nghiệm người dùng
                 DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát chương trình?",
@@ -253,24 +253,26 @@ namespace Project
                     // Nếu người dùng chọn "Yes", thoát hoàn toàn ứng dụng.
                     // Lệnh này sẽ đóng tất cả các form, kể cả FormLogin đang bị ẩn.
                     timerdatetime.Stop();
+                    timmerCheckStatus.Stop();
                     if (HAMXULY.UpdateStatus(CurrentUserSession.MaNguoiDung.ToString(), "0") > 0)
                     {
                         CurrentUserSession.Clear();
                     }
-                    
+                    xacnhandongform = false;
                     Application.Exit();
                 }
                 else
                 {
                     // Nếu người dùng chọn "No", hủy hành động đóng form.
                     // Form sẽ không bị đóng lại.
-                    e.Cancel = false;
+                    e.Cancel = true;
                 }
             }
             else
             {
                 // chia ra 2 cách đóng form dựa trên tắt form và đăng xuất, cách đây là tắt form
                 timerdatetime.Stop();
+                timmerCheckStatus.Stop();
                 if (HAMXULY.UpdateStatus(CurrentUserSession.MaNguoiDung.ToString(), "0") > 0)
                 {
                     //MessageBox.Show("Cập Nhật Trạng Thái Thành Công '" + CurrentUserSession.MaNguoiDung.ToString() + "'");
@@ -357,7 +359,7 @@ namespace Project
                 {
                     loginForm.Show();
                 }
-
+                xacnhandongform = false;
                 this.Close();
             }
         }
