@@ -31,7 +31,7 @@ namespace Project
                 PhanQuyen();
             }
         }
-
+        
         // Đặt hàm này trong class Index.cs
         private ToolStripMenuItem GetTopLevelMenuItem(ToolStripMenuItem menuItem)
         {
@@ -275,7 +275,8 @@ namespace Project
                 {
                     //MessageBox.Show("Cập Nhật Trạng Thái Thành Công '" + CurrentUserSession.MaNguoiDung.ToString() + "'");
                 }
-                Application.Exit();
+
+                //Application.Exit();
             }
            
         }
@@ -365,6 +366,41 @@ namespace Project
         {
             Form_QL_ND fm = new Form_QL_ND();
             fm.ShowDialog();
+        }
+
+        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void timmerCheckStatus_Tick(object sender, EventArgs e)
+        {
+            int kt = HAMXULY.CheckStatus(CurrentUserSession.MaNguoiDung.ToString());
+            Console.WriteLine("Biến KT trong Timmer: '"+kt+"'");
+            if (kt == 0)
+            {
+                timerdatetime.Stop();
+                timmerCheckStatus.Stop();
+                MessageBox.Show("Bạn đã bị đăng xuất");
+                
+                Form loginForm = Application.OpenForms["FormLogin"];
+                if (loginForm != null)
+                {
+
+
+
+                    
+                    CurrentUserSession.Clear();
+                    ((FormLogin)loginForm).ResetPass();
+                    // 3. Nếu tìm thấy, hiển thị nó trở lại
+                    loginForm.Show();
+                    xacnhandongform = false;
+                    this.Close();
+
+                }
+                
+            }
+
         }
     }
 }

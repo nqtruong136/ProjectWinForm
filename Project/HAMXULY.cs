@@ -251,6 +251,29 @@ namespace Project
             return kq;
         }
 
+        public static int CheckStatus(string ma)
+        {
+            string query = "Select TrangThaiHoatDong From NguoiDung Where MaNguoiDung = @ma";
+            SqlParameter pa = new SqlParameter("@ma",ma);
+            DataTable dt = new DataTable();
+            bool kt = HAMXULY.ExecuteQueryWithParameters(query, dt, pa);
+            
+            if (dt.Rows[0]["TrangThaiHoatDong"].ToString().Trim() =="False")
+            {
+                Console.WriteLine("biến kt trong CheckStatus là:  " + kt + " và trả về 0 true");
+                
+                return 0;
+             }
+            Console.WriteLine(dt.Rows[0]["TrangThaiHoatDong"].ToString().Trim());
+            Console.WriteLine("biến kt trong CheckStatus là:  " + kt + " và trả về 1 false");
+            //MessageBox.Show(" '"+ dt.Rows[0]["TrangThaiHoatDong"].ToString().Trim()+"' ");
+            return 1;
+                
+            
+            
+            
+        }
+
         public static bool TruyVan(string query, DataTable dt, params SqlParameter[] parameters)
         {
             // Lấy chuỗi kết nối từ nơi đã định nghĩa

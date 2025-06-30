@@ -381,6 +381,7 @@ namespace Project
             this.btnLogOut.TabIndex = 12;
             this.btnLogOut.Text = "Logout";
             this.btnLogOut.UseVisualStyleBackColor = false;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // btnXoa
             // 

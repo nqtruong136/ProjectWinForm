@@ -49,6 +49,7 @@ namespace Project
             this.statusUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusDatetime = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.timmerCheckStatus = new System.Windows.Forms.Timer(this.components);
             this.menuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +67,7 @@ namespace Project
             this.menuStrip2.Size = new System.Drawing.Size(1442, 28);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
+            this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
             // 
             // hệThốngToolStripMenuItem
             // 
@@ -211,6 +213,12 @@ namespace Project
             this.pnlContent.TabIndex = 3;
             this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
             // 
+            // timmerCheckStatus
+            // 
+            this.timmerCheckStatus.Enabled = true;
+            this.timmerCheckStatus.Interval = 10000;
+            this.timmerCheckStatus.Tick += new System.EventHandler(this.timmerCheckStatus_Tick);
+            // 
             // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -253,5 +261,6 @@ namespace Project
         private System.Windows.Forms.ToolStripMenuItem quảnLýKhuyếnMãiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quảnLýDoanhThuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quảnLýNgườiDùngToolStripMenuItem;
+        private System.Windows.Forms.Timer timmerCheckStatus;
     }
 }

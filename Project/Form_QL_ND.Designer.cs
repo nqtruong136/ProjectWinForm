@@ -81,6 +81,7 @@ namespace Project
             this.dgvQLND.Size = new System.Drawing.Size(1228, 408);
             this.dgvQLND.TabIndex = 1;
             this.dgvQLND.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQLND_CellContentClick);
+            this.dgvQLND.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQLND_CellDoubleClick);
             // 
             // MaNguoiDung
             // 
@@ -88,6 +89,7 @@ namespace Project
             this.MaNguoiDung.MinimumWidth = 6;
             this.MaNguoiDung.Name = "MaNguoiDung";
             this.MaNguoiDung.ReadOnly = true;
+            this.MaNguoiDung.Width = 125;
             // 
             // TenDangNhap
             // 
@@ -95,6 +97,7 @@ namespace Project
             this.TenDangNhap.MinimumWidth = 6;
             this.TenDangNhap.Name = "TenDangNhap";
             this.TenDangNhap.ReadOnly = true;
+            this.TenDangNhap.Width = 125;
             // 
             // MatKhau
             // 
@@ -134,6 +137,7 @@ namespace Project
             this.VaiTro.MinimumWidth = 6;
             this.VaiTro.Name = "VaiTro";
             this.VaiTro.ReadOnly = true;
+            this.VaiTro.Width = 125;
             // 
             // TrangThai
             // 

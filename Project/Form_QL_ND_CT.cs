@@ -14,11 +14,11 @@ namespace Project
     public partial class Form_QL_ND_CT : Form
     {
         string maND;
-        public Form_QL_ND_CT(/*string ma*/)
+        public Form_QL_ND_CT(string ma)
         {
             InitializeComponent();
             ViewPanel(pnlEdit, false);
-            maND = "3";
+            maND = ma;
         }
 
 
@@ -155,36 +155,76 @@ namespace Project
         {
             if (btnThem.Enabled==true)
             {
-                string ma;
-                string hoten;
-                string diachi;
-                string sdt;
-                string tk;
-                string mk;
-                if (rdoAD.Checked)
+                string ma = txtEma.Text;
+                string hoten = txtEten.Text;
+                string diachi = txtEdc.Text;
+                string sdt = txtEdc.Text;
+                string tk = txtEtk.Text;
+                string mk = txtEmk.Text;
+                string vt = KTvaiTro().ToString();
+                
+
+                string query = "INSERT INTO NguoiDung (TenDangNhap, MatKhauMaHoa, HoVaTen, SoDienThoai, DiaChi, MaVaiTro, TrangThaiHoatDong) VALUES (@tk, @mk, @ten, @sdt, @diachi, @vt, '0'); ";
+                SqlParameter[] pa = new SqlParameter[6]
                 {
-                    string vt = "0";
-                }
-                if (rdoQL.Checked)
+                    new SqlParameter("@tk",tk),
+                    new SqlParameter("@mk",mk),
+                    new SqlParameter("@ten",hoten),
+                    new SqlParameter("@sdt",sdt),
+                    new SqlParameter("@diachi",diachi),
+                    new SqlParameter("@vt",vt)
+                };
+                int affect = HAMXULY.ThucThiLenhCoThamSo(query,pa);
+                if (affect > 0)
                 {
-                    string vt = "1";
+                    MessageBox.Show("Thêm Thành Công");
+                    this.Close();
                 }
                 else
                 {
-                    string vt = "2";
+                    MessageBox.Show("Thêm Thất Bại");
                 }
 
-                string query = "Insert Into NguoiDung Values (@ma, @tk, @mk, @ten, @) ";
-
-
-                this.Close();
+                
             }
             if (btnEdit.Enabled==true)
             {
+                string ma = txtEma.Text;
+                string hoten = txtEten.Text;
+                string diachi = txtEdc.Text;
+                string sdt = txtEdc.Text;
+                string tk = txtEtk.Text;
+                string mk = txtEmk.Text;
+                string vt= KTvaiTro().ToString();
 
+
+                string query = "UPDATE NguoiDung SET TenDangNhap = @tk, MatKhauMaHoa = @mk, HoVaTen = @ten, SoDienThoai = @sdt, DiaChi = @diachi, MaVaiTro = @vt WHERE MaNguoiDung = @maND; ";
+                SqlParameter[] pa = new SqlParameter[7]
+                {
+                    new SqlParameter("@tk", tk),
+                    new SqlParameter("@mk", mk),
+                    new SqlParameter("@ten", hoten),
+                    new SqlParameter("@sdt", sdt),
+                    new SqlParameter("@diachi", diachi),
+                    new SqlParameter("@vt", vt),
+                    new SqlParameter("@maND", ma)
+                };
+                int affect = HAMXULY.ThucThiLenhCoThamSo(query, pa);
+                if (affect > 0)
+                {
+                    MessageBox.Show("Cập Nhật Thành Công");
+                    DangXuat();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Cập Nhật Thất Bại");
+                }
+                Refreshh();
             }
         }
         private void Refreshh() {
+            ResettxtEdit();
             FillTextBox(maND);
         }
         private void btnHuy_Click(object sender, EventArgs e)
@@ -207,7 +247,7 @@ namespace Project
             btnEdit.Enabled = false;
             txtEma.Focus();
             btnLuu.Enabled = true;
-            
+            txtEma.Enabled = false;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -220,7 +260,28 @@ namespace Project
             txtEma.Focus();
             btnLuu.Enabled = true;
             GetFromRightToLeft(true);
-            txtEma.Enabled = false;
+            //txtEma.Enabled = false;
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            DangXuat();
+            
+        }
+        private void DangXuat()
+        {
+            string query = "Update NguoiDung Set TrangThaiHoatDong = 0 Where MaNguoiDung=@ma";
+            SqlParameter qp = new SqlParameter("@ma", maND);
+            int result = HAMXULY.ThucThiLenhCoThamSo(query, qp);
+            if (result > 0)
+            {
+                MessageBox.Show("Bạn đã Đăng Xuất Tài Khoản Thành Công");
+            }
+            else
+            {
+                MessageBox.Show("Đăng Xuất Thất Bại");
+            }
+            this.Close();
         }
     }
 }
