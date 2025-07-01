@@ -102,7 +102,7 @@ namespace Project
         // Đặt hàm này trong Form của bạn
         private void LoadNhanVienComboBox(ComboBox cboNguoiTao)
         {
-            string query = "SELECT MaNguoiDung, HoVaTen FROM dbo.NguoiDung WHERE TrangThaiHoatDong = 1 ORDER BY HoVaTen";
+            string query = "SELECT MaNguoiDung, HoVaTen FROM dbo.NguoiDung ORDER BY HoVaTen";
             DataTable dtNhanVien = new DataTable();
 
             if (HAMXULY.TruyVan(query, dtNhanVien))
@@ -244,6 +244,11 @@ namespace Project
                 FormHD reportForm = new FormHD(maHoaDonDuocChon);
                 reportForm.ShowDialog();
             }
+        }
+
+        private void cboNguoiTao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
