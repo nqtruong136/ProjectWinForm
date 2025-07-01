@@ -50,7 +50,7 @@ namespace Project
             var items = new[]
             {
                 new KeyValuePair<string, int>("Chuyển khoản", 1),
-                new KeyValuePair<string, int>("Thanh toán", 2)
+                new KeyValuePair<string, int>("Tiền mặt", 2)
             };
 
             cboHT.DataSource = items;
@@ -409,6 +409,11 @@ namespace Project
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboHT_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

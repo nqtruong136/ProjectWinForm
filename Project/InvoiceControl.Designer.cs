@@ -37,6 +37,8 @@ namespace Project
             this.panel1 = new System.Windows.Forms.Panel();
             this.label = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboHT = new System.Windows.Forms.ComboBox();
             this.pnlViewDisCount = new System.Windows.Forms.Panel();
             this.lbldiscount = new System.Windows.Forms.Label();
             this.lblsub = new System.Windows.Forms.Label();
@@ -47,8 +49,6 @@ namespace Project
             this.lblThanhToan = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.timerColorChange = new System.Windows.Forms.Timer(this.components);
-            this.cboHT = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -133,6 +133,26 @@ namespace Project
             this.panel2.Size = new System.Drawing.Size(512, 161);
             this.panel2.TabIndex = 3;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 75);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(155, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Hình Thức Thanh Toán";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // cboHT
+            // 
+            this.cboHT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboHT.FormattingEnabled = true;
+            this.cboHT.Location = new System.Drawing.Point(174, 70);
+            this.cboHT.Name = "cboHT";
+            this.cboHT.Size = new System.Drawing.Size(121, 24);
+            this.cboHT.TabIndex = 10;
+            this.cboHT.SelectedIndexChanged += new System.EventHandler(this.cboHT_SelectedIndexChanged);
             // 
             // pnlViewDisCount
             // 
@@ -236,25 +256,6 @@ namespace Project
             this.timerColorChange.Enabled = true;
             this.timerColorChange.Interval = 20;
             this.timerColorChange.Tick += new System.EventHandler(this.timerColorChange_Tick);
-            // 
-            // cboHT
-            // 
-            this.cboHT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboHT.FormattingEnabled = true;
-            this.cboHT.Location = new System.Drawing.Point(174, 70);
-            this.cboHT.Name = "cboHT";
-            this.cboHT.Size = new System.Drawing.Size(121, 24);
-            this.cboHT.TabIndex = 10;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 75);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(155, 17);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Hình Thức Thanh Toán";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // InvoiceControl
             // 
