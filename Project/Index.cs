@@ -298,7 +298,9 @@ namespace Project
 
         private void quảnLýSảnPhẩmToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-           
+            SetActiveMenuItem(quảnLýSảnPhẩmToolStripMenuItem1);
+            FormSanpham fm = new FormSanpham();
+            fm.ShowDialog();
             /*step 2*/
 
         }
@@ -404,6 +406,13 @@ namespace Project
                 
             }
 
+        }
+
+        private void quảnLýKhuyếnMãiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetActiveMenuItem(quảnLýKhuyếnMãiToolStripMenuItem);
+            FormKhuyenmai fm = new FormKhuyenmai();
+            fm.ShowDialog();
         }
     }
 }
