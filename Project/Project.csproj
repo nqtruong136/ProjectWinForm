@@ -144,6 +144,12 @@
     <Compile Include="FormHD.Designer.cs">
       <DependentUpon>FormHD.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormKhuyenmai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKhuyenmai.Designer.cs">
+      <DependentUpon>FormKhuyenmai.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormHD.resx">
       <DependentUpon>FormHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormKhuyenmai.resx">
+      <DependentUpon>FormKhuyenmai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>

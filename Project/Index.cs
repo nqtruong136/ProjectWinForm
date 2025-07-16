@@ -298,6 +298,7 @@ namespace Project
 
         private void quảnLýSảnPhẩmToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+           
             /*step 2*/
 
         }

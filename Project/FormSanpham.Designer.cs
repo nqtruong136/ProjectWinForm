@@ -43,6 +43,12 @@
             this.CobMaDM = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.btnsua = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LuoiSP)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -186,18 +192,77 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Quản Lý Sản Phẩm";
             // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(44, 685);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(110, 54);
+            this.btnThem.TabIndex = 16;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            // 
+            // btnsua
+            // 
+            this.btnsua.Location = new System.Drawing.Point(223, 685);
+            this.btnsua.Name = "btnsua";
+            this.btnsua.Size = new System.Drawing.Size(109, 51);
+            this.btnsua.TabIndex = 17;
+            this.btnsua.Text = "Xóa";
+            this.btnsua.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(422, 685);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(104, 51);
+            this.button3.TabIndex = 18;
+            this.button3.Text = "Sửa";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(626, 685);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(105, 51);
+            this.button4.TabIndex = 19;
+            this.button4.Text = "Lưu";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(800, 685);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(105, 51);
+            this.button5.TabIndex = 20;
+            this.button5.Text = "Hủy";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(979, 685);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(120, 51);
+            this.button6.TabIndex = 21;
+            this.button6.Text = "Đóng";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
             // FormSanpham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1163, 744);
+            this.ClientSize = new System.Drawing.Size(1145, 761);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnsua);
+            this.Controls.Add(this.btnThem);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LuoiSP);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FormSanpham";
-            this.Text = "Quản lý sản phẩm";
             this.Load += new System.EventHandler(this.FormSanpham_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LuoiSP)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -224,5 +289,11 @@
         private System.Windows.Forms.ComboBox CobMaDM;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Button btnsua;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }

@@ -64,7 +64,7 @@ namespace Project
             this.báoCáoToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1442, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(1442, 30);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
@@ -77,7 +77,7 @@ namespace Project
             this.quảnLýNgườiDùngToolStripMenuItem,
             this.đăngXuấtToolStripMenuItem});
             this.hệThốngToolStripMenuItem.Name = "hệThốngToolStripMenuItem";
-            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
+            this.hệThốngToolStripMenuItem.Size = new System.Drawing.Size(88, 26);
             this.hệThốngToolStripMenuItem.Text = "Hệ Thống";
             // 
             // đổiMậtKhẩuToolStripMenuItem
@@ -104,7 +104,7 @@ namespace Project
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(88, 24);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(88, 26);
             this.toolStripMenuItem1.Text = "Bán Hàng";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -117,7 +117,7 @@ namespace Project
             this.quảnLýKhuyếnMãiToolStripMenuItem,
             this.quảnLýDoanhThuToolStripMenuItem});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
+            this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(75, 26);
             this.quảnLýToolStripMenuItem.Text = "Quản Lý";
             this.quảnLýToolStripMenuItem.Click += new System.EventHandler(this.quảnLýToolStripMenuItem_Click);
             // 
@@ -158,7 +158,7 @@ namespace Project
             // báoCáoToolStripMenuItem
             // 
             this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
-            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(79, 26);
             this.báoCáoToolStripMenuItem.Text = "Báo Cáo";
             this.báoCáoToolStripMenuItem.Click += new System.EventHandler(this.báoCáoToolStripMenuItem_Click);
             // 
@@ -207,9 +207,9 @@ namespace Project
             // pnlContent
             // 
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContent.Location = new System.Drawing.Point(0, 28);
+            this.pnlContent.Location = new System.Drawing.Point(0, 30);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(1442, 695);
+            this.pnlContent.Size = new System.Drawing.Size(1442, 693);
             this.pnlContent.TabIndex = 3;
             this.pnlContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContent_Paint);
             // 
