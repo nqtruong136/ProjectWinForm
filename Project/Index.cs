@@ -26,10 +26,9 @@ namespace Project
             
             this.codeRole = CurrentUserSession.MaVaiTro.ToString();
             this.codeUser = CurrentUserSession.MaNguoiDung.ToString();
-            if (!this.DesignMode)
-            {
-                PhanQuyen();
-            }
+            
+            PhanQuyen();
+            
         }
         
         // Đặt hàm này trong class Index.cs
@@ -162,7 +161,7 @@ namespace Project
 
         private void Index_Load(object sender, EventArgs e)
         {
-            toolStripMenuItem1.PerformClick();
+            
 
             if (!this.DesignMode)
             {
@@ -413,6 +412,16 @@ namespace Project
             SetActiveMenuItem(quảnLýKhuyếnMãiToolStripMenuItem);
             FormKhuyenmai fm = new FormKhuyenmai();
             fm.ShowDialog();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnskip_Click(object sender, EventArgs e)
+        {
+            toolStripMenuItem1.PerformClick();
         }
     }
 }
