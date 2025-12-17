@@ -13,12 +13,12 @@ namespace Project
 {
     class HAMXULY
     {
-        public static string connectionString = @"Data Source=172.25.173.248,1433;Initial Catalog=QLCK;User ID=hieu;Password=159753;TrustServerCertificate=True;";
+        public static string connectionString = @"Paste chuỗi kết nối tại đây";
         public static SqlConnection conn;
         public static void Connect()
         {
             conn = new SqlConnection();
-            conn.ConnectionString = @"Data Source=172.25.173.248,1433;Initial Catalog=QLCK;User ID=hieu;Password=159753;TrustServerCertificate=True;";
+            conn.ConnectionString = @"Paste chuỗi kết nối tại đây nó có dạng như (ví dụ này dành cho csdl ): Data Source=192.168.3.5,1433;Initial Catalog=QLCK;User ID=hieu;Password=159753;TrustServerCertificate=True; hoặc là Data Source=MACBOOK-PRO\SQLEXPRESS;Initial Catalog=QLCK;Integrated Security=True";
             conn.Open();    
         }   
         public static void Disconnected()
@@ -34,7 +34,7 @@ namespace Project
         public static bool ExecuteQueryWithParameters(string query, DataTable dataTable, params SqlParameter[] parameters)
         {
             // Sử dụng 'using' để đảm bảo kết nối luôn được đóng, kể cả khi có lỗi
-            using (SqlConnection connection = new SqlConnection(@"Data Source=172.25.173.248,1433;Initial Catalog=QLCK;User ID=hieu;Password=159753;TrustServerCertificate=True;"))
+            using (SqlConnection connection = new SqlConnection(@"Paste chuỗi kết nối tại đây"))
             {
                 // Sử dụng 'using' cho SqlCommand và SqlDataAdapter
                 using (SqlCommand command = new SqlCommand(query, connection))
