@@ -216,6 +216,7 @@ namespace Project
                     // 3. Nếu tìm thấy, hiển thị nó trở lại
                     loginForm.Show();
                     xacnhandongform = false;
+                    UserControl_Pos.ResetStaticState();
                     this.Close();
                     
                 }
@@ -396,6 +397,7 @@ namespace Project
                     
                     CurrentUserSession.Clear();
                     ((FormLogin)loginForm).ResetPass();
+                    UserControl_Pos.ResetStaticState();
                     // 3. Nếu tìm thấy, hiển thị nó trở lại
                     loginForm.Show();
                     xacnhandongform = false;

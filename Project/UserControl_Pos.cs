@@ -23,6 +23,30 @@ namespace Project
             
             InitializeComponent();
         }
+        public static void ResetStaticState()
+        {
+            // 1. Hủy InvoiceControl và TabItemControl
+            if (tabMap != null)
+            {
+                foreach (var pair in tabMap)
+                {
+                    pair.Value?.Dispose();
+                    pair.Key?.Dispose();
+                }
+                tabMap.Clear();
+            }
+
+            // 2. Reset tab hiện tại
+            currentActiveTab = null;
+
+            // 3. Reset counter
+            tabCounter = 1;
+
+            // 4. Clear UI reference
+            tabPanelGlobal = null;
+            pnlMainGlobal = null;
+        }
+
         private void UserControl_Pos_Load(object sender, EventArgs e)
         {
             tabPanelGlobal = this.tabPanel;
